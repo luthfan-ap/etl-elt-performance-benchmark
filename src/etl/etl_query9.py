@@ -48,8 +48,8 @@ def extract_data(table_name, file_format, chunk_size=CHUNKSIZE):
             df = chunk.to_pandas()
             yield df
 
-TRANSFORMATION
-def transform_data():
+# TRANSFORMATION
+# def transform_data():
     """
     Transform data
     TO-DO:
