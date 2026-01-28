@@ -2,12 +2,11 @@ import duckdb
 import os
 
 # --- Configuration ---
-SOURCE_DIR = './tbl'  # Directory where your .tbl files are
-OUTPUT_DIR = '.' # Main folder for converted data
+SOURCE_DIR = './tbl'  # directory file .tbl
+OUTPUT_DIR = '.' # folder untuk converted data
 TABLES = ['customer', 'lineitem', 'nation', 'orders', 'part', 'partsupp', 'region', 'supplier']
 
-# Define the TPC-H schemas
-# --- UPDATED: Removed the '_unused' column from all 8 tables ---
+# Defining the TPC-H schemas
 SCHEMAS = {
     'lineitem': {
         'l_orderkey': 'BIGINT',
@@ -88,15 +87,16 @@ SCHEMAS = {
     }
 }
 
-# Create output directories
+# Create directories for outputs
 os.makedirs(f'{OUTPUT_DIR}/csv', exist_ok=True)
 os.makedirs(f'{OUTPUT_DIR}/json', exist_ok=True)
 os.makedirs(f'{OUTPUT_DIR}/parquet', exist_ok=True)
 
-print("Starting conversion for 8 tables with DuckDB (robust schema)...")
+print("Starting conversion for 8 tables with DuckDB...")
 
 con = duckdb.connect()
 
+# cek apakah table ada di SCHEMAS
 for table in TABLES:
     if table not in SCHEMAS:
         print(f"Skipping {table}: No schema defined.")
@@ -122,7 +122,6 @@ for table in TABLES:
         )
     """
     
-    # --- THIS IS THE 2ND CHANGE ---
     # We now select all columns, as there is no '_unused' to exclude
     select_sql = f"SELECT * FROM {read_tbl_sql}"
 
