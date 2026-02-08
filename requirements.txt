@@ -1,5 +1,5 @@
-duckdb # untuk convert.py
-
+duckdb              # untuk convert.py
+python-dotenv       # untuk load environment variables
 pandas
 psycopg2-binary		# untuk connection ke PostgreSQL
 dbt-postgres		# untuk dbt transformation di ELT
