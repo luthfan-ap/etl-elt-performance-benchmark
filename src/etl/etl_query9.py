@@ -153,8 +153,8 @@ def load_data(df, table_name):
     # data loading nanti akan dilakukan di function yang ini
     if table_name == "lineitem":
         try:
-            print(f"Loading {len(df)} rows into query9 table...")
-            df.to_sql("query9", con=engine, if_exists='append', index=False)
+            print(f"Loading {len(df)} rows into etl_query9 table...")
+            df.to_sql("etl_query9", con=engine, if_exists='append', index=False)
         except Exception as e:
             print(f"Error loading data: {e}")
 
