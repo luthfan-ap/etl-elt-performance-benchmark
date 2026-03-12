@@ -44,12 +44,6 @@ STAGING_AREA = {
 
 # EXTRACTION
 def extract_data(table_name, file_format, chunk_size=CHUNKSIZE):
-    """
-    Extract data from file in chunks
-    :param table_name: Table name (iterative) e.g. 'region', 'nation', etc.
-    :param file_format: File format e.g. 'csv', 'jsonl', 'parquet'
-    :param chunk_size: Number of rows per chunk (set to CHUNKSIZE by default)
-    """
     # defining file path
     file_path = os.path.join(DATASET_DIR, f"{file_format}", f"{table_name}.{file_format}")
 
@@ -73,25 +67,13 @@ def extract_data(table_name, file_format, chunk_size=CHUNKSIZE):
 
 # TRANSFORMATION
 def transform_data(df, table_name, staging_area=STAGING_AREA):
-    """
-    Transform data
-    TO-DO:
-    1. do a .str.strip() for string columns
-    2. change datatype, e.g. from string to date (for dates)
-    3. do the QUERY 9 transformation
-    """
-
-    # 1. stripping whitespaces for string columns
-    str_cols = df.select_dtypes(include=['object', 'string']).columns
-    for col in str_cols:
-        df[col] = df[col].str.strip()
-
-    # 2. change datatype for date columns
+    
+    # 1. change datatype for date columns
     date_cols = [col for col in df.columns if ('date' in col.lower())]
     for col in date_cols:
-        df[col] = pd.to_datetime(df[col], errors='coerce')
+        df[col] = pd.to_datetime(df[col], format='%Y-%m-%d', errors='coerce')
 
-    # 3. QUERY 9 transformation
+    # 2. QUERY 9 transformation
     # -- filters (can reduce rows immediately)
     if table_name == "part":
         if staging_area["df_part"] is None:
