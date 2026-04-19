@@ -72,32 +72,42 @@ def clean_data(table_name, df):
     print(f"Starting to clean table '{table_name}'...")
     if table_name == "lineitem":
         df = df.select(
-            col("l_orderkey"),
-            col("l_partkey"),
-            col("l_suppkey"),
-            col("l_quantity"),
-            col("l_extendedprice"),
-            col("l_discount")
+            col("l_orderkey").cast("integer"),
+            col("l_partkey").cast("integer"),
+            col("l_suppkey").cast("integer"),
+            col("l_quantity").cast("double"),
+            col("l_extendedprice").cast("double"),
+            col("l_discount").cast("double")
         )
     
     elif table_name == "orders":
         df = df.select(
-            col("o_orderkey"),
-            col("o_orderdate")
+            col("o_orderkey").cast("integer"),
+            col("o_orderdate").cast("date")
         )
 
     elif table_name == "part":
         df = df.select(
-            col("p_partkey"),
-            col("p_name")
+            col("p_partkey").cast("integer"),
+            col("p_name").cast("string")
         )
 
     elif table_name == "supplier":
-        df = df.select("s_suppkey", "s_nationkey")
+        df = df.select(
+            col("s_suppkey").cast("integer"),
+            col("s_nationkey").cast("integer")
+        )
     elif table_name == "nation":
-        df = df.select("n_nationkey", "n_name")
+        df = df.select(
+            col("n_nationkey").cast("integer"),
+            col("n_name").cast("string")
+        )
     elif table_name == "partsupp":
-        df = df.select(col("ps_partkey"), col("ps_suppkey"), col("ps_supplycost").cast("double"))
+        df = df.select(
+            col("ps_partkey").cast("integer"),
+            col("ps_suppkey").cast("integer"),
+            col("ps_supplycost").cast("double")
+        )
 
     print(f"Table '{table_name}' cleaned successfully.")
     return df

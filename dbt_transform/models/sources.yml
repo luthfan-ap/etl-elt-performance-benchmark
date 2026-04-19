@@ -1,0 +1,23 @@
+version: 2
+
+sources:
+  - name: raw_data           # nama alias untuk sumber data
+    schema: raw              # schema buat pyspark taruh datanya
+    tables:
+      # --- TABEL MILIK ARSITEKTUR ELT ---
+      - name: elt_nation
+      - name: elt_region
+      - name: elt_customer
+      - name: elt_part
+      - name: elt_supplier
+      - name: elt_partsupp
+      - name: elt_orders
+      - name: elt_lineitem
+
+      # --- TABEL MILIK ARSITEKTUR HYBRID ---
+      - name: hybrid_nation
+      - name: hybrid_part
+      - name: hybrid_supplier
+      - name: hybrid_partsupp
+      - name: hybrid_orders
+      - name: hybrid_lineitem
