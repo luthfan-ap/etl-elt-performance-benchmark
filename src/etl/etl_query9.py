@@ -69,7 +69,7 @@ def extract_data(table_name, file_format):
 
 # TRANSFORMATION PHASE
 def transform_data(df):
-    print("=== TRANSFORMATION ===")
+    print("\n=== TRANSFORMATION ===")
     print("Starting the transformation phase...")
 
     df_nation   = df["nation"]
@@ -142,24 +142,24 @@ def transform_data(df):
 
 # LOADING PHASE
 def load_data(df):
-    print("=== LOADING ===")
-    print("Starting the loading phase...\nLoading into 'etl.etl_query9' table...")
+    print("\n=== LOADING ===")
+    print("Starting the loading phase...\nLoading into 'result_etl.etl_query9' table...")
     try:
         df.write \
             .jdbc(
                 url=DB_URL,
-                table="etl.etl_query9",
+                table="result_etl.etl_query9",
                 mode="overwrite",
                 properties=DB_PROPERTIES
             )
-        print("Table 'etl.etl_query9' loaded successfully.")
+        print("Table 'result_etl.etl_query9' loaded successfully.")
     except Exception as e:
         print(f"Error loading data: {e}")
 
 
 if __name__ == "__main__":
     extracted_dfs = {} # wadah sementara untuk semua tabel yang udah di extract
-    print("=== EXTRACTION ===")
+    print("\n=== EXTRACTION ===")
     for table in TABLE_NAME:
         extracted_dfs[table] = extract_data(table, "csv")
     transformed_data = transform_data(extracted_dfs)
