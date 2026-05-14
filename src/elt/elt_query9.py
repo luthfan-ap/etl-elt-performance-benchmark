@@ -44,11 +44,13 @@ TABLE_NAME = [
     "lineitem", # terakhir, karena depends ke orders and partsupp
 ]
 FILE_FORMAT = [
-    "csv", "json", "parquet"
+    "csv", "jsonl", "parquet"
 ]
 
 # EXTRACTION PHASE
 def extract_data(table_name, file_format):
+    spark.sparkContext.setJobGroup("ELT_Extract", f"ELT Extract Phase: {table_name}")
+    spark.sparkContext.setJobDescription(f"[ELT] Extract '{table_name}' from {file_format}")
 
     print(f"Starting to Extract table '{table_name}'...")
 
@@ -74,6 +76,8 @@ def extract_data(table_name, file_format):
 
 # LOADING PHASE
 def load_data(table_name, df):
+    spark.sparkContext.setJobGroup("ELT_Load", f"ELT Load Phase: {table_name}")
+    spark.sparkContext.setJobDescription(f"[ELT] Load '{table_name}' into raw.elt_{table_name}")
     print(f"Starting to Load table '{table_name}'...")
     try:
         df.write.jdbc(
@@ -86,11 +90,13 @@ def load_data(table_name, df):
         print(f"Error loading data: {e}")
 
 if __name__ == "__main__":
+    spark.sparkContext.setJobGroup("ELT_Pipeline", "TPC-H Query 9 - ELT Pipeline")
     for table in TABLE_NAME:
         print(f"=== Starting EL process for table '{table}'... ===")
         extracted_data = extract_data(table, "csv")
         load_data(table, extracted_data)
         print(f"Table '{table}' loaded successfully.\n")
+    spark.sparkContext.setJobDescription("[ELT] Pipeline Complete")
     
     print("E and L Process done. You can access the http://localhost:4040 for detailed monitoring.")
     print("Press CTRL+C to terminate the process.")

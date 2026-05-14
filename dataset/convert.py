@@ -89,7 +89,7 @@ SCHEMAS = {
 
 # Create directories for outputs
 os.makedirs(f'{OUTPUT_DIR}/csv', exist_ok=True)
-os.makedirs(f'{OUTPUT_DIR}/json', exist_ok=True)
+os.makedirs(f'{OUTPUT_DIR}/jsonl', exist_ok=True)
 os.makedirs(f'{OUTPUT_DIR}/parquet', exist_ok=True)
 
 print("Starting conversion for 8 tables with DuckDB...")
@@ -106,7 +106,7 @@ for table in TABLES:
     
     tbl_file = f'{SOURCE_DIR}/{table}.tbl'
     csv_file = f'{OUTPUT_DIR}/csv/{table}.csv'
-    jsonl_file = f'{OUTPUT_DIR}/json/{table}.jsonl'
+    jsonl_file = f'{OUTPUT_DIR}/jsonl/{table}.jsonl'
     parquet_file = f'{OUTPUT_DIR}/parquet/{table}.parquet'
     
     table_schema = SCHEMAS[table]

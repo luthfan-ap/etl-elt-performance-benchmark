@@ -43,11 +43,13 @@ TABLE_NAME = [
     "lineitem", # terakhir, karena depends ke orders and partsupp
 ]
 FILE_FORMAT = [
-    "csv", "json", "parquet"
+    "csv", "jsonl", "parquet"
 ]
 
 # EXTRACTION PHASE
 def extract_data(table_name, file_format):
+    spark.sparkContext.setJobGroup("ETL_Extract", f"ETL Extract Phase: {table_name}")
+    spark.sparkContext.setJobDescription(f"[ETL] Extract '{table_name}' from {file_format}")
     print(f"Extracting table '{table_name}.{file_format}'...")
 
     if file_format == "csv": # butuh config header=True khusus untuk CSV.
@@ -69,6 +71,8 @@ def extract_data(table_name, file_format):
 
 # TRANSFORMATION PHASE
 def transform_data(df):
+    spark.sparkContext.setJobGroup("ETL_Transform", "ETL Transform Phase: TPC-H Query 9")
+    spark.sparkContext.setJobDescription("[ETL] Transform - Join, filter, aggregate for TPC-H Q9")
     print("\n=== TRANSFORMATION ===")
     print("Starting the transformation phase...")
 
@@ -142,6 +146,8 @@ def transform_data(df):
 
 # LOADING PHASE
 def load_data(df):
+    spark.sparkContext.setJobGroup("ETL_Load", "ETL Load Phase: result_etl.etl_query9")
+    spark.sparkContext.setJobDescription("[ETL] Load transformed data into result_etl.etl_query9")
     print("\n=== LOADING ===")
     print("Starting the loading phase...\nLoading into 'result_etl.etl_query9' table...")
     try:
@@ -158,12 +164,14 @@ def load_data(df):
 
 
 if __name__ == "__main__":
+    spark.sparkContext.setJobGroup("ETL_Pipeline", "TPC-H Query 9 - ETL Pipeline")
     extracted_dfs = {} # wadah sementara untuk semua tabel yang udah di extract
     print("\n=== EXTRACTION ===")
     for table in TABLE_NAME:
-        extracted_dfs[table] = extract_data(table, "csv")
+        extracted_dfs[table] = extract_data(table, "jsonl")
     transformed_data = transform_data(extracted_dfs)
     load_data(transformed_data)
+    spark.sparkContext.setJobDescription("[ETL] Pipeline Complete")
 
     print("ETL Process done. You can access the http://localhost:4040 for detailed monitoring.")
     print("Press CTRL+C to terminate the process.")

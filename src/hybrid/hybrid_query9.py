@@ -43,11 +43,13 @@ TABLE_NAME = [
     "lineitem", # terakhir, karena depends ke orders and partsupp
 ]
 FILE_FORMAT = [
-    "csv", "json", "parquet"
+    "csv", "jsonl", "parquet"
 ]
 
 # EXTRACTION PHASE
 def extract_data(table_name, file_format):
+    spark.sparkContext.setJobGroup("Hybrid_Extract", f"Hybrid Extract Phase: {table_name}")
+    spark.sparkContext.setJobDescription(f"[Hybrid] Extract '{table_name}' from {file_format}")
     print(f"Starting to extract table '{table_name}'...")
     if file_format == "csv": # butuh config header=True khusus untuk CSV.
         df = spark.read \
@@ -69,6 +71,8 @@ def extract_data(table_name, file_format):
 
 # CLEANING PHASE
 def clean_data(table_name, df):
+    spark.sparkContext.setJobGroup("Hybrid_Clean", f"Hybrid Clean Phase: {table_name}")
+    spark.sparkContext.setJobDescription(f"[Hybrid] Clean '{table_name}' - select & cast columns")
     print(f"Starting to clean table '{table_name}'...")
     if table_name == "lineitem":
         df = df.select(
@@ -113,6 +117,8 @@ def clean_data(table_name, df):
     return df
 
 def load_data(table_name, df):
+    spark.sparkContext.setJobGroup("Hybrid_Load", f"Hybrid Load Phase: {table_name}")
+    spark.sparkContext.setJobDescription(f"[Hybrid] Load '{table_name}' into raw.hybrid_{table_name}")
     print(f"Starting to load table '{table_name}'...")
     try:
         df.write.jdbc(
@@ -125,12 +131,14 @@ def load_data(table_name, df):
         print(f"Error loading data: {e}")
 
 if __name__ == "__main__":
+    spark.sparkContext.setJobGroup("Hybrid_Pipeline", "TPC-H Query 9 - Hybrid Pipeline")
     for table in TABLE_NAME:
         print(f"=== Starting ECL Process for table '{table}' ===")
         extracted_data = extract_data(table, "csv")
         df_cleaned = clean_data(table, extracted_data)
         load_data(table, df_cleaned)
         print(f"Table '{table}' loaded successfully.\n")
+    spark.sparkContext.setJobDescription("[Hybrid] Pipeline Complete")
     
     print("E, C, L Process done. You can access the http://localhost:4040 for detailed monitoring.")
     print("Press CTRL+C to terminate the process.")
