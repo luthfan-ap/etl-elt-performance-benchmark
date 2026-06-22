@@ -4,7 +4,7 @@ sources:
   - name: raw_data           # nama alias untuk sumber data
     schema: raw              # schema buat pyspark taruh datanya
     tables:
-      # --- TABEL MILIK ARSITEKTUR ELT ---
+      # ELT
       - name: elt_nation
       - name: elt_region
       - name: elt_customer
@@ -14,7 +14,7 @@ sources:
       - name: elt_orders
       - name: elt_lineitem
 
-      # --- TABEL MILIK ARSITEKTUR HYBRID ---
+      # HYBRID
       - name: hybrid_nation
       - name: hybrid_part
       - name: hybrid_supplier

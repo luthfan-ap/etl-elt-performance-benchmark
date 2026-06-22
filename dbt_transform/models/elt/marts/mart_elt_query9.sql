@@ -28,5 +28,5 @@ group by
     nation,
     o_year
 order by
-    nation asc,
+    nation,
     o_year desc

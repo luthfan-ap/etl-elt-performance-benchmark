@@ -34,10 +34,9 @@ DB_PROPERTIES = {
     "driver": "org.postgresql.Driver"
 }
 
-# NAMES (untuk ELT, semua tabel di-load ke data warehouse target)
+# NAMES (untuk ELT, beberapa tabel yang relevan saja yang di-load ke data warehouse target)
 TABLE_NAME = [
-    "nation", "region", # tabel referensi, taruh pertama
-    "customer",
+    "nation", # tabel referensi, taruh pertama
     "part", "supplier",
     "partsupp", # depends ke part and supplier
     "orders", # depends ke customer (tapi di query 9, customer ga dipake)
@@ -78,11 +77,11 @@ def extract_data(table_name, file_format):
 def load_data(table_name, df):
     spark.sparkContext.setJobGroup("ELT_Load", f"ELT Load Phase: {table_name}")
     spark.sparkContext.setJobDescription(f"[ELT] Load '{table_name}' into raw.elt_{table_name}")
-    print(f"Starting to Load table '{table_name}'...")
+    print(f"Starting to Load table '{table_name}' into {DB_RAW_SCHEMA}.elt_{table_name}...")
     try:
         df.write.jdbc(
             url=DB_URL,
-            table=f"raw.elt_{table_name}",
+            table=f"{DB_RAW_SCHEMA}.elt_{table_name}",
             mode="overwrite",
             properties=DB_PROPERTIES
         )
