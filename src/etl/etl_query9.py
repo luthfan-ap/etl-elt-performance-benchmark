@@ -4,6 +4,11 @@ from dotenv import load_dotenv
 from pyspark.sql import SparkSession
 from pyspark.sql import functions as F
 
+# FILE PATH
+SCRIPT_DIR_PATH = SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+DATASET_DIR = os.path.join(SCRIPT_DIR, "..", "..", "dataset")
+SPARK_LOG_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, "..", "..", "logs", "spark-logs"))
+
 # SPARK BUILDER
 spark = (
     SparkSession.builder
@@ -13,12 +18,11 @@ spark = (
         .config("spark.executor.memory", "2g")
         .config("spark.sql.shuffle.partitions", "8")
         .config("spark.jars.packages", "org.postgresql:postgresql:42.5.4")
+
+        .config("spark.eventLog.enabled", "true")
+        .config("spark.eventLog.dir", f"file:///{SPARK_LOG_DIR.replace(os.sep, '/')}")
         .getOrCreate()
 )
-
-# FILE PATH
-SCRIPT_DIR_PATH = SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-DATASET_DIR = os.path.join(SCRIPT_DIR, "..", "..", "dataset")
 
 # DB CONNECTION PROPERTIES
 load_dotenv()
@@ -42,9 +46,7 @@ TABLE_NAME = [
     "orders", # depends ke customer (tapi di query 9, customer ga dipake)
     "lineitem", # terakhir, karena depends ke orders and partsupp
 ]
-FILE_FORMAT = [
-    "csv", "jsonl", "parquet"
-]
+FILE_FORMAT = "csv" # csv, jsonl, parquet
 
 # EXTRACTION PHASE
 def extract_data(table_name, file_format):
@@ -161,6 +163,7 @@ def load_data(df):
         print("Table 'result_etl.etl_query9' loaded successfully.")
     except Exception as e:
         print(f"Error loading data: {e}")
+        raise
 
 
 if __name__ == "__main__":
@@ -168,7 +171,7 @@ if __name__ == "__main__":
     extracted_dfs = {} # wadah sementara untuk semua tabel yang udah di extract
     print("\n=== EXTRACTION ===")
     for table in TABLE_NAME:
-        extracted_dfs[table] = extract_data(table, "jsonl")
+        extracted_dfs[table] = extract_data(table, FILE_FORMAT)
     transformed_data = transform_data(extracted_dfs)
     load_data(transformed_data)
     spark.sparkContext.setJobDescription("[ETL] Pipeline Complete")

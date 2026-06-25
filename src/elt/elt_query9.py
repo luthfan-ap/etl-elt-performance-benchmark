@@ -1,23 +1,30 @@
 import os
+os.environ["SPARK_LOCAL_IP"] = "127.0.0.1"
 import time # untuk time.sleep (untuk review Spark Web UI agar ada waktu)
 from dotenv import load_dotenv
 from pyspark.sql import SparkSession
+
+# FILE PATH
+SCRIPT_DIR_PATH = SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+DATASET_DIR = os.path.join(SCRIPT_DIR, "..", "..", "dataset")
+SPARK_LOG_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, "..", "..", "logs", "spark-logs"))
 
 # SPARK BUILDER
 spark = (
     SparkSession.builder
         .appName("TPCH_Query9_ELT")
+        .config("spark.driver.bindAddress", "127.0.0.1") \
+        .config("spark.driver.host", "127.0.0.1") \
         .master("local[*]")
         .config("spark.driver.memory", "1g")
         .config("spark.executor.memory", "2g")
         .config("spark.sql.shuffle.partitions", "8")
         .config("spark.jars.packages", "org.postgresql:postgresql:42.5.4")
+
+        .config("spark.eventLog.enabled", "true")
+        .config("spark.eventLog.dir", f"file:///{SPARK_LOG_DIR.replace(os.sep, '/')}")
         .getOrCreate()
 )
-
-# FILE PATH
-SCRIPT_DIR_PATH = SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-DATASET_DIR = os.path.join(SCRIPT_DIR, "..", "..", "dataset")
 
 # DB CONNECTION PROPERTIES
 load_dotenv()
@@ -42,9 +49,7 @@ TABLE_NAME = [
     "orders", # depends ke customer (tapi di query 9, customer ga dipake)
     "lineitem", # terakhir, karena depends ke orders and partsupp
 ]
-FILE_FORMAT = [
-    "csv", "jsonl", "parquet"
-]
+FILE_FORMAT = "csv" # csv, jsonl, parquet
 
 # EXTRACTION PHASE
 def extract_data(table_name, file_format):
@@ -82,17 +87,18 @@ def load_data(table_name, df):
         df.write.jdbc(
             url=DB_URL,
             table=f"{DB_RAW_SCHEMA}.elt_{table_name}",
-            mode="overwrite",
+            mode="append",
             properties=DB_PROPERTIES
         )
     except Exception as e:
         print(f"Error loading data: {e}")
+        raise
 
 if __name__ == "__main__":
     spark.sparkContext.setJobGroup("ELT_Pipeline", "TPC-H Query 9 - ELT Pipeline")
     for table in TABLE_NAME:
         print(f"=== Starting EL process for table '{table}'... ===")
-        extracted_data = extract_data(table, "csv")
+        extracted_data = extract_data(table, FILE_FORMAT)
         load_data(table, extracted_data)
         print(f"Table '{table}' loaded successfully.\n")
     spark.sparkContext.setJobDescription("[ELT] Pipeline Complete")
