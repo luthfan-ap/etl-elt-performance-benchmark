@@ -1,5 +1,6 @@
 # semua dataset TPC-H
-*.csv
+# *.csv
+dataset/
 *.tbl
 *.parquet
 *.json
