@@ -9,14 +9,22 @@ SCRIPT_DIR_PATH = SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 DATASET_DIR = os.path.join(SCRIPT_DIR, "..", "..", "dataset")
 SPARK_LOG_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, "..", "..", "logs", "spark-logs"))
 
+# SPARK HISTORY LOGS NAMING
+ARCH = "ETL"
+FILE_FORMAT_RUN = os.getenv("FILE_FORMAT_RUN", "csv")
+RUN_ID = os.getenv("RUN_ID", "run1")
+SCALE_FACTOR = os.getenv("SCALE_FACTOR", "sf5")
+
 # SPARK BUILDER
 spark = (
     SparkSession.builder
-        .appName("TPCH_Query9_ETL")
+        .appName("TPCH_Query9_{ARCH}_{FILE_FORMAT_RUN}_{RUN_ID}_{SCALE_FACTOR}")
+        .config("spark.driver.bindAddress", "127.0.0.1") \
+        .config("spark.driver.host", "127.0.0.1") \
         .master("local[*]")
-        .config("spark.driver.memory", "1g")
-        .config("spark.executor.memory", "2g")
-        .config("spark.sql.shuffle.partitions", "8")
+        .config("spark.driver.memory", "2g")
+        .config("spark.executor.memory", "3g")
+        .config("spark.sql.shuffle.partitions", "16")
         .config("spark.jars.packages", "org.postgresql:postgresql:42.5.4")
 
         .config("spark.eventLog.enabled", "true")
@@ -176,7 +184,13 @@ if __name__ == "__main__":
     load_data(transformed_data)
     spark.sparkContext.setJobDescription("[ETL] Pipeline Complete")
 
-    print("ETL Process done. You can access the http://localhost:4040 for detailed monitoring.")
-    print("Press CTRL+C to terminate the process.")
-    time.sleep(3600)
+    KEEP_UI_OPEN = os.getenv("KEEP_UI_OPEN", "false").lower() in ("true", "1", "yes")
+
+    print("ETL Process done.")
+
+    if KEEP_UI_OPEN:
+        print("Spark UI is available at http://localhost:4040")
+        input("Press Enter to stop SparkSession...")
+
     spark.stop()
+    print("SparkSession stopped.")

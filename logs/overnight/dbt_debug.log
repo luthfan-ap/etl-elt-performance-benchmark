@@ -1,0 +1,38 @@
+/Users/lpurwito/Documents/personal/etl-elt-performance-benchmark/.venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+[0m15:26:07  Running with dbt=1.10.22
+[0m15:26:07  dbt version: 1.10.22
+[0m15:26:07  python version: 3.9.6
+[0m15:26:07  python path: /Users/lpurwito/Documents/personal/etl-elt-performance-benchmark/.venv/bin/python3
+[0m15:26:07  os info: macOS-26.5.1-arm64-arm-64bit
+[0m15:26:07  Using profiles dir at /Users/lpurwito/.dbt
+[0m15:26:07  Using profiles.yml file at /Users/lpurwito/.dbt/profiles.yml
+[0m15:26:07  Using dbt_project.yml file at /Users/lpurwito/Documents/personal/etl-elt-performance-benchmark/dbt_transform/dbt_project.yml
+[0m15:26:07  adapter type: postgres
+[0m15:26:07  adapter version: 1.9.1
+[0m15:26:07  Configuration:
+[0m15:26:07    profiles.yml file [[32mOK found and valid[0m]
+[0m15:26:07    dbt_project.yml file [[32mOK found and valid[0m]
+[0m15:26:07  Required dependencies:
+[0m15:26:07   - git [[32mOK found[0m]
+
+[0m15:26:07  Connection:
+[0m15:26:07    host: 127.0.0.1
+[0m15:26:07    port: 5432
+[0m15:26:07    user: lpurwito
+[0m15:26:07    database: tpch_dw
+[0m15:26:07    schema: result
+[0m15:26:07    connect_timeout: 10
+[0m15:26:07    role: None
+[0m15:26:07    search_path: None
+[0m15:26:07    keepalives_idle: 0
+[0m15:26:07    sslmode: None
+[0m15:26:07    sslcert: None
+[0m15:26:07    sslkey: None
+[0m15:26:07    sslrootcert: None
+[0m15:26:07    application_name: dbt
+[0m15:26:07    retries: 1
+[0m15:26:07  Registered adapter: postgres=1.9.1
+[0m15:26:08    Connection test: [[32mOK connection ok[0m]
+
+[0m15:26:08  [32mAll checks passed![0m
