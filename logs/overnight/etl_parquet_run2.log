@@ -3,11 +3,11 @@ WARNING: Using incubator modules: jdk.incubator.vector
 Ivy Default Cache set to: /Users/lpurwito/.ivy2.5.2/cache
 The jars for the packages stored in: /Users/lpurwito/.ivy2.5.2/jars
 org.postgresql#postgresql added as a dependency
-:: resolving dependencies :: org.apache.spark#spark-submit-parent-a0a3775f-1350-4801-99e6-5a711f454fd6;1.0
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-a9d4ceab-12c0-4e3c-aa70-9a98b8991f4b;1.0
 	confs: [default]
 	found org.postgresql#postgresql;42.5.4 in central
 	found org.checkerframework#checker-qual;3.5.0 in central
-:: resolution report :: resolve 62ms :: artifacts dl 19ms
+:: resolution report :: resolve 57ms :: artifacts dl 12ms
 	:: modules in use:
 	org.checkerframework#checker-qual;3.5.0 from central in [default]
 	org.postgresql#postgresql;42.5.4 from central in [default]
@@ -17,21 +17,21 @@ org.postgresql#postgresql added as a dependency
 	---------------------------------------------------------------------
 	|      default     |   2   |   0   |   0   |   0   ||   2   |   0   |
 	---------------------------------------------------------------------
-:: retrieving :: org.apache.spark#spark-submit-parent-a0a3775f-1350-4801-99e6-5a711f454fd6
+:: retrieving :: org.apache.spark#spark-submit-parent-a9d4ceab-12c0-4e3c-aa70-9a98b8991f4b
 	confs: [default]
-	0 artifacts copied, 2 already retrieved (0kB/18ms)
-26/06/25 23:16:26 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+	0 artifacts copied, 2 already retrieved (0kB/14ms)
+26/06/26 02:31:23 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
 Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
 Setting default log level to "WARN".
 To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
 
 === EXTRACTION ===
-Extracting table 'nation.csv'...
-Extracting table 'part.csv'...
-Extracting table 'supplier.csv'...
-Extracting table 'partsupp.csv'...
-Extracting table 'orders.csv'...
-Extracting table 'lineitem.csv'...
+Extracting table 'nation.parquet'...
+Extracting table 'part.parquet'...
+Extracting table 'supplier.parquet'...
+Extracting table 'partsupp.parquet'...
+Extracting table 'orders.parquet'...
+Extracting table 'lineitem.parquet'...
 
 === TRANSFORMATION ===
 Starting the transformation phase...
@@ -39,6 +39,6 @@ Starting the transformation phase...
 === LOADING ===
 Starting the loading phase...
 Loading into 'result_etl.etl_query9' table...
-[Stage 7:>   (0 + 7) / 30][Stage 8:>    (0 + 1) / 8][Stage 9:>    (0 + 0) / 8][Stage 7:>   (0 + 7) / 30][Stage 8:>    (1 + 1) / 8][Stage 9:>    (0 + 0) / 8][Stage 7:>   (0 + 7) / 30][Stage 8:=>   (2 + 1) / 8][Stage 9:>    (0 + 0) / 8][Stage 7:>   (0 + 7) / 30][Stage 8:=>   (3 + 1) / 8][Stage 9:>    (0 + 0) / 8][Stage 7:>   (0 + 7) / 30][Stage 8:==>  (4 + 1) / 8][Stage 9:>    (0 + 0) / 8][Stage 7:>   (0 + 7) / 30][Stage 8:===> (5 + 1) / 8][Stage 9:>    (0 + 0) / 8][Stage 7:>   (0 + 7) / 30][Stage 8:===> (6 + 1) / 8][Stage 9:>    (0 + 0) / 8][Stage 7:>   (0 + 8) / 30][Stage 9:>    (0 + 0) / 8][Stage 10:>   (0 + 0) / 8][Stage 7:>   (1 + 8) / 30][Stage 9:>    (0 + 0) / 8][Stage 10:>   (0 + 0) / 8][Stage 7:>   (7 + 8) / 30][Stage 9:>    (0 + 0) / 8][Stage 10:>   (0 + 0) / 8][Stage 7:=>  (8 + 8) / 30][Stage 9:>    (0 + 0) / 8][Stage 10:>   (0 + 0) / 8][Stage 7:=>  (9 + 8) / 30][Stage 9:>    (0 + 0) / 8][Stage 10:>   (0 + 0) / 8][Stage 7:=> (13 + 8) / 30][Stage 9:>    (0 + 0) / 8][Stage 10:>   (0 + 0) / 8][Stage 7:=> (16 + 8) / 30][Stage 9:>    (0 + 0) / 8][Stage 10:>   (0 + 0) / 8][Stage 7:=> (17 + 8) / 30][Stage 9:>    (0 + 0) / 8][Stage 10:>   (0 + 0) / 8][Stage 7:==>(23 + 7) / 30][Stage 9:>    (0 + 1) / 8][Stage 10:>   (0 + 0) / 8][Stage 7:==>(24 + 6) / 30][Stage 9:>    (0 + 2) / 8][Stage 10:>   (0 + 0) / 8][Stage 7:==>(24 + 6) / 30][Stage 9:=>   (2 + 2) / 8][Stage 10:>   (0 + 0) / 8][Stage 7:==>(25 + 5) / 30][Stage 9:=>   (2 + 3) / 8][Stage 10:>   (0 + 0) / 8][Stage 7:==>(25 + 5) / 30][Stage 9:===> (5 + 3) / 8][Stage 10:>   (0 + 0) / 8][Stage 7:==>(26 + 4) / 30][Stage 9:===> (5 + 3) / 8][Stage 10:>   (0 + 1) / 8][Stage 7:==>(29 + 1) / 30][Stage 9:===> (5 + 3) / 8][Stage 10:>   (1 + 4) / 8][Stage 9:===> (5 + 3) / 8][Stage 10:>   (1 + 5) / 8][Stage 11:>   (0 + 0) / 2][Stage 9:===> (6 + 2) / 8][Stage 10:>   (1 + 6) / 8][Stage 11:>   (0 + 0) / 2][Stage 9:====>(7 + 1) / 8][Stage 10:>   (1 + 7) / 8][Stage 11:>   (0 + 0) / 2][Stage 10:>   (1 + 7) / 8][Stage 11:>   (0 + 1) / 2][Stage 13:>   (0 + 0) / 1][Stage 10:==>               (1 + 7) / 8][Stage 13:>                 (0 + 1) / 1]                                                                                [Stage 10:=======>                                                  (1 + 7) / 8][Stage 10:==>               (1 + 7) / 8][Stage 17:=>               (1 + 1) / 16][Stage 10:===========>      (5 + 3) / 8][Stage 17:=>               (1 + 5) / 16][Stage 10:=============>    (6 + 2) / 8][Stage 17:=>               (1 + 6) / 16][Stage 17:=======>                                                 (2 + 8) / 16][Stage 17:=====================>                                   (6 + 8) / 16][Stage 17:========================>                                (7 + 8) / 16][Stage 17:======================================>                 (11 + 5) / 16][Stage 21:>                                                        (0 + 8) / 10][Stage 21:=====>                                                   (1 + 8) / 10][Stage 21:=================>                                       (3 + 7) / 10][Stage 21:=============================================>           (8 + 2) / 10][Stage 27:>                                                        (0 + 8) / 14][Stage 27:====>                                                    (1 + 8) / 14][Stage 27:========================>                                (6 + 8) / 14]                                                                                Table 'result_etl.etl_query9' loaded successfully.
+[Stage 6:>    (0 + 8) / 8][Stage 7:>    (0 + 0) / 8][Stage 8:>    (0 + 0) / 8][Stage 6:===> (6 + 2) / 8][Stage 7:>    (0 + 6) / 8][Stage 8:>    (0 + 0) / 8][Stage 6:====>(7 + 1) / 8][Stage 7:>    (0 + 7) / 8][Stage 8:>    (0 + 0) / 8][Stage 7:===> (6 + 2) / 8][Stage 8:>    (0 + 6) / 8][Stage 9:>    (0 + 0) / 1][Stage 7:====>(7 + 1) / 8][Stage 8:>    (0 + 7) / 8][Stage 9:>    (0 + 0) / 1]                                                                                [Stage 13:>                                                         (0 + 8) / 9][Stage 13:===================================================>      (8 + 1) / 9][Stage 16:>                                                        (0 + 8) / 11][Stage 16:===============>                                         (3 + 8) / 11][Stage 16:====================================>                    (7 + 4) / 11][Stage 16:==================================================>     (10 + 1) / 11][Stage 21:>                                                        (0 + 8) / 11][Stage 21:====================>                                    (4 + 7) / 11][Stage 21:=========================================>               (8 + 3) / 11]                                                                                Table 'result_etl.etl_query9' loaded successfully.
 ETL Process done.
 SparkSession stopped.

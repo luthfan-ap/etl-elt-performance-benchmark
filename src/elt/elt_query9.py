@@ -18,7 +18,7 @@ SCALE_FACTOR = os.getenv("SCALE_FACTOR", "sf5")
 # SPARK BUILDER
 spark = (
     SparkSession.builder
-        .appName("TPCH_Query9_{ARCH}_{FILE_FORMAT_RUN}_{RUN_ID}_{SCALE_FACTOR}")
+        .appName(f"TPCH_Query9_{ARCH}_{FILE_FORMAT_RUN}_{RUN_ID}_{SCALE_FACTOR}")
         .config("spark.driver.bindAddress", "127.0.0.1") \
         .config("spark.driver.host", "127.0.0.1") \
         .master("local[*]")
@@ -55,7 +55,6 @@ TABLE_NAME = [
     "orders", # depends ke customer (tapi di query 9, customer ga dipake)
     "lineitem", # terakhir, karena depends ke orders and partsupp
 ]
-FILE_FORMAT = "csv" # csv, jsonl, parquet
 
 # EXTRACTION PHASE
 def extract_data(table_name, file_format):
@@ -104,7 +103,7 @@ if __name__ == "__main__":
     spark.sparkContext.setJobGroup("ELT_Pipeline", "TPC-H Query 9 - ELT Pipeline")
     for table in TABLE_NAME:
         print(f"=== Starting EL process for table '{table}'... ===")
-        extracted_data = extract_data(table, FILE_FORMAT)
+        extracted_data = extract_data(table, FILE_FORMAT_RUN)
         load_data(table, extracted_data)
         print(f"Table '{table}' loaded successfully.\n")
     spark.sparkContext.setJobDescription("[ELT] Pipeline Complete")

@@ -1,5 +1,6 @@
 # semua dataset TPC-H
-*.csv
+# *.csv
+dataset/
 *.tbl
 *.parquet
 *.json
@@ -18,4 +19,4 @@ __pycache__/
 # folder hasil compile dbt
 target/
 dbt_packages/
-logs/
+# logs/

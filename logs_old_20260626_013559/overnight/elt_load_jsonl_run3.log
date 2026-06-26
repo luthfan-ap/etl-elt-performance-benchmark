@@ -1,0 +1,65 @@
+WARNING: Using incubator modules: jdk.incubator.vector
+:: loading settings :: url = jar:file:/Users/lpurwito/Documents/personal/etl-elt-performance-benchmark/.venv/lib/python3.9/site-packages/pyspark/jars/ivy-2.5.3.jar!/org/apache/ivy/core/settings/ivysettings.xml
+Ivy Default Cache set to: /Users/lpurwito/.ivy2.5.2/cache
+The jars for the packages stored in: /Users/lpurwito/.ivy2.5.2/jars
+org.postgresql#postgresql added as a dependency
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-6338e84c-eba8-42e0-ada2-c6b42bf7ac4c;1.0
+	confs: [default]
+	found org.postgresql#postgresql;42.5.4 in central
+	found org.checkerframework#checker-qual;3.5.0 in central
+:: resolution report :: resolve 57ms :: artifacts dl 8ms
+	:: modules in use:
+	org.checkerframework#checker-qual;3.5.0 from central in [default]
+	org.postgresql#postgresql;42.5.4 from central in [default]
+	---------------------------------------------------------------------
+	|                  |            modules            ||   artifacts   |
+	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+	---------------------------------------------------------------------
+	|      default     |   2   |   0   |   0   |   0   ||   2   |   0   |
+	---------------------------------------------------------------------
+:: retrieving :: org.apache.spark#spark-submit-parent-6338e84c-eba8-42e0-ada2-c6b42bf7ac4c
+	confs: [default]
+	0 artifacts copied, 2 already retrieved (0kB/20ms)
+26/06/25 23:37:36 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+=== Starting EL process for table 'nation'... ===
+Starting to Extract table 'nation'...
+Table 'nation' extracted successfully.
+Starting to Load table 'nation' into raw.elt_nation...
+Table 'nation' loaded successfully.
+
+=== Starting EL process for table 'part'... ===
+Starting to Extract table 'part'...
+Table 'part' extracted successfully.
+Starting to Load table 'part' into raw.elt_part...
+[Stage 3:>                                                          (0 + 8) / 8][Stage 3:=======>                                                   (1 + 7) / 8]                                                                                Table 'part' loaded successfully.
+
+=== Starting EL process for table 'supplier'... ===
+Starting to Extract table 'supplier'...
+Table 'supplier' extracted successfully.
+Starting to Load table 'supplier' into raw.elt_supplier...
+Table 'supplier' loaded successfully.
+
+=== Starting EL process for table 'partsupp'... ===
+Starting to Extract table 'partsupp'...
+Table 'partsupp' extracted successfully.
+Starting to Load table 'partsupp' into raw.elt_partsupp...
+[Stage 7:>                                                          (0 + 8) / 8][Stage 7:=======>                                                   (1 + 7) / 8][Stage 7:==============>                                            (2 + 6) / 8]                                                                                Table 'partsupp' loaded successfully.
+
+=== Starting EL process for table 'orders'... ===
+Starting to Extract table 'orders'...
+Table 'orders' extracted successfully.
+Starting to Load table 'orders' into raw.elt_orders...
+[Stage 9:>                                                          (0 + 8) / 8][Stage 9:=======>                                                   (1 + 7) / 8][Stage 9:==============>                                            (2 + 6) / 8]                                                                                Table 'orders' loaded successfully.
+
+=== Starting EL process for table 'lineitem'... ===
+Starting to Extract table 'lineitem'...
+Table 'lineitem' extracted successfully.
+Starting to Load table 'lineitem' into raw.elt_lineitem...
+26/06/25 23:38:39 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
+[Stage 11:>                                                        (0 + 8) / 30][Stage 11:=====>                                                   (3 + 8) / 30][Stage 11:=============>                                           (7 + 8) / 30][Stage 11:===============>                                         (8 + 8) / 30][Stage 11:==================>                                     (10 + 8) / 30][Stage 11:========================>                               (13 + 8) / 30][Stage 11:==========================>                             (14 + 8) / 30][Stage 11:============================>                           (15 + 8) / 30][Stage 11:=============================>                          (16 + 8) / 30][Stage 11:===============================>                        (17 + 8) / 30][Stage 11:=======================================>                (21 + 8) / 30][Stage 11:=========================================>              (22 + 8) / 30][Stage 11:============================================>           (24 + 6) / 30][Stage 11:==============================================>         (25 + 5) / 30][Stage 11:======================================================> (29 + 1) / 30]                                                                                Table 'lineitem' loaded successfully.
+
+ELT Extract-Load process done.
+SparkSession stopped.

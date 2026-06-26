@@ -22,14 +22,61 @@ SCALE_FACTOR="sf5"
 JAVA_HOME_PATH="$(brew --prefix openjdk@17)/libexec/openjdk.jdk/Contents/Home"
 GTIME="$(brew --prefix gnu-time)/bin/gtime"
 
+RESOURCE_SAMPLE_FILE="$PROJECT_ROOT/logs/metrics/resource_samples.csv"
+SAMPLE_INTERVAL=2
+
 mkdir -p "$LOG_DIR"
 mkdir -p "$(dirname "$METRICS_FILE")"
 
-echo "timestamp,scale_factor,architecture,format,run,phase,elapsed_seconds,status,log_file" > "$METRICS_FILE"
+echo "timestamp,scale_factor,architecture,format,run,phase,elapsed_seconds,status,log_file" > "$RESOURCE_SAMPLE_FILE"
 
 # =========================
 # HELPER FUNCTION
 # =========================
+start_resource_monitor() {
+    local architecture="$1"
+    local format="$2"
+    local run="$3"
+    local phase="$4"
+
+    (
+        while true; do
+            local ts
+            ts=$(date '+%Y-%m-%d %H:%M:%S')
+
+            local pids
+            pids=$(pgrep -f "etl_query9|elt_query9|hybrid_query9|spark|java|postgres|dbt" | tr '\n' ',' | sed 's/,$//')
+
+            if [ -n "$pids" ]; then
+                ps -p "$pids" -o pid=,ppid=,comm=,%cpu=,%mem=,rss= | awk \
+                    -v ts="$ts" \
+                    -v sf="$SCALE_FACTOR" \
+                    -v arch="$architecture" \
+                    -v fmt="$format" \
+                    -v run="$run" \
+                    -v phase="$phase" \
+                    'BEGIN { OFS="," }
+                    {
+                        rss_mb = $6 / 1024
+                        print ts, sf, arch, fmt, run, phase, $1, $2, $3, $4, $5, rss_mb
+                    }' >> "$RESOURCE_SAMPLE_FILE"
+            fi
+
+            sleep "$SAMPLE_INTERVAL"
+        done
+    ) &
+
+    RESOURCE_MONITOR_PID=$!
+}
+
+stop_resource_monitor() {
+    if [ -n "$RESOURCE_MONITOR_PID" ]; then
+        kill "$RESOURCE_MONITOR_PID" 2>/dev/null || true
+        wait "$RESOURCE_MONITOR_PID" 2>/dev/null || true
+        RESOURCE_MONITOR_PID=""
+    fi
+}
+
 run_timed() {
     local architecture="$1"
     local format="$2"
@@ -52,11 +99,17 @@ run_timed() {
     start_time=$(python -c "import time; print(time.time())")
 
     set +e
+
+    start_resource_monitor "$architecture" "$format" "$run" "$phase"
+
     env JAVA_HOME="$JAVA_HOME_PATH" SPARK_LOCAL_IP="127.0.0.1" \
         "$GTIME" -v -o "${log_file%.log}_resource.txt" \
         "$@" > "$log_file" 2>&1
 
     status=$?
+
+    stop_resource_monitor
+
     set -e
 
     end_time=$(python -c "import time; print(time.time())")

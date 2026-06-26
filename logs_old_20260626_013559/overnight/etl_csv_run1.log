@@ -1,0 +1,64 @@
+Traceback (most recent call last):
+  File "/Users/lpurwito/Documents/personal/etl-elt-performance-benchmark/src/etl/etl_query9.py", line 20, in <module>
+    SparkSession.builder
+  File "/Users/lpurwito/Documents/personal/etl-elt-performance-benchmark/.venv/lib/python3.9/site-packages/pyspark/sql/session.py", line 556, in getOrCreate
+    sc = SparkContext.getOrCreate(sparkConf)
+  File "/Users/lpurwito/Documents/personal/etl-elt-performance-benchmark/.venv/lib/python3.9/site-packages/pyspark/core/context.py", line 523, in getOrCreate
+    SparkContext(conf=conf or SparkConf())
+  File "/Users/lpurwito/Documents/personal/etl-elt-performance-benchmark/.venv/lib/python3.9/site-packages/pyspark/core/context.py", line 205, in __init__
+    SparkContext._ensure_initialized(self, gateway=gateway, conf=conf)
+  File "/Users/lpurwito/Documents/personal/etl-elt-performance-benchmark/.venv/lib/python3.9/site-packages/pyspark/core/context.py", line 444, in _ensure_initialized
+    SparkContext._gateway = gateway or launch_gateway(conf)
+  File "/Users/lpurwito/Documents/personal/etl-elt-performance-benchmark/.venv/lib/python3.9/site-packages/pyspark/java_gateway.py", line 108, in launch_gateway
+    time.sleep(0.1)
+KeyboardInterrupt
+WARNING: Using incubator modules: jdk.incubator.vector
+:: loading settings :: url = jar:file:/Users/lpurwito/Documents/personal/etl-elt-performance-benchmark/.venv/lib/python3.9/site-packages/pyspark/jars/ivy-2.5.3.jar!/org/apache/ivy/core/settings/ivysettings.xml
+Ivy Default Cache set to: /Users/lpurwito/.ivy2.5.2/cache
+The jars for the packages stored in: /Users/lpurwito/.ivy2.5.2/jars
+org.postgresql#postgresql added as a dependency
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-c41624c3-41db-4112-9e74-dbfa367733b5;1.0
+	confs: [default]
+	found org.postgresql#postgresql;42.5.4 in central
+	found org.checkerframework#checker-qual;3.5.0 in central
+:: resolution report :: resolve 121ms :: artifacts dl 4ms
+	:: modules in use:
+	org.checkerframework#checker-qual;3.5.0 from central in [default]
+	org.postgresql#postgresql;42.5.4 from central in [default]
+	---------------------------------------------------------------------
+	|                  |            modules            ||   artifacts   |
+	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+	---------------------------------------------------------------------
+	|      default     |   2   |   0   |   0   |   0   ||   2   |   0   |
+	---------------------------------------------------------------------
+:: retrieving :: org.apache.spark#spark-submit-parent-c41624c3-41db-4112-9e74-dbfa367733b5
+	confs: [default]
+	0 artifacts copied, 2 already retrieved (0kB/7ms)
+26/06/26 01:23:42 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+Exception in thread "main" java.nio.file.NoSuchFileException: /var/folders/tg/lmy00kfj2qd8t4d7yn4bf88r0000gn/T/tmpixr2bsq8/connection18209242275678396101.info
+	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:92)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:106)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:111)
+	at java.base/sun.nio.fs.UnixFileSystemProvider.newByteChannel(UnixFileSystemProvider.java:218)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:380)
+	at java.base/java.nio.file.Files.createFile(Files.java:658)
+	at java.base/java.nio.file.TempFileHelper.create(TempFileHelper.java:136)
+	at java.base/java.nio.file.TempFileHelper.createTempFile(TempFileHelper.java:159)
+	at java.base/java.nio.file.Files.createTempFile(Files.java:878)
+	at org.apache.spark.api.python.PythonGatewayServer$.main(PythonGatewayServer.scala:55)
+	at org.apache.spark.api.python.PythonGatewayServer.main(PythonGatewayServer.scala)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.apache.spark.deploy.JavaMainApplication.start(SparkApplication.scala:52)
+	at org.apache.spark.deploy.SparkSubmit.org$apache$spark$deploy$SparkSubmit$$runMain(SparkSubmit.scala:1027)
+	at org.apache.spark.deploy.SparkSubmit.doRunMain$1(SparkSubmit.scala:204)
+	at org.apache.spark.deploy.SparkSubmit.submit(SparkSubmit.scala:227)
+	at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:96)
+	at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:1132)
+	at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:1141)
+	at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)

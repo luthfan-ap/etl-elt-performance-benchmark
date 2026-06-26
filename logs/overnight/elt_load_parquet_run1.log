@@ -3,11 +3,11 @@ WARNING: Using incubator modules: jdk.incubator.vector
 Ivy Default Cache set to: /Users/lpurwito/.ivy2.5.2/cache
 The jars for the packages stored in: /Users/lpurwito/.ivy2.5.2/jars
 org.postgresql#postgresql added as a dependency
-:: resolving dependencies :: org.apache.spark#spark-submit-parent-dae2d8f2-c164-44b7-bd6e-e9e382edf881;1.0
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-90dba6c4-38d2-4f5c-a535-0c236c489516;1.0
 	confs: [default]
 	found org.postgresql#postgresql;42.5.4 in central
 	found org.checkerframework#checker-qual;3.5.0 in central
-:: resolution report :: resolve 100ms :: artifacts dl 14ms
+:: resolution report :: resolve 49ms :: artifacts dl 7ms
 	:: modules in use:
 	org.checkerframework#checker-qual;3.5.0 from central in [default]
 	org.postgresql#postgresql;42.5.4 from central in [default]
@@ -17,16 +17,16 @@ org.postgresql#postgresql added as a dependency
 	---------------------------------------------------------------------
 	|      default     |   2   |   0   |   0   |   0   ||   2   |   0   |
 	---------------------------------------------------------------------
-:: retrieving :: org.apache.spark#spark-submit-parent-dae2d8f2-c164-44b7-bd6e-e9e382edf881
+:: retrieving :: org.apache.spark#spark-submit-parent-90dba6c4-38d2-4f5c-a535-0c236c489516
 	confs: [default]
-	0 artifacts copied, 2 already retrieved (0kB/13ms)
-26/06/25 22:46:35 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+	0 artifacts copied, 2 already retrieved (0kB/8ms)
+26/06/26 02:00:25 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
 Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
 Setting default log level to "WARN".
 To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
 === Starting EL process for table 'nation'... ===
 Starting to Extract table 'nation'...
-Table 'nation' extracted successfully.
+[Stage 0:>                                                          (0 + 1) / 1]                                                                                Table 'nation' extracted successfully.
 Starting to Load table 'nation' into raw.elt_nation...
 Table 'nation' loaded successfully.
 
@@ -34,7 +34,7 @@ Table 'nation' loaded successfully.
 Starting to Extract table 'part'...
 Table 'part' extracted successfully.
 Starting to Load table 'part' into raw.elt_part...
-[Stage 3:>                                                          (0 + 8) / 8][Stage 3:=======>                                                   (1 + 7) / 8]                                                                                Table 'part' loaded successfully.
+[Stage 3:=======>                                                   (1 + 7) / 8][Stage 3:=============================>                             (4 + 4) / 8][Stage 3:===================================================>       (7 + 1) / 8]                                                                                Table 'part' loaded successfully.
 
 === Starting EL process for table 'supplier'... ===
 Starting to Extract table 'supplier'...
@@ -46,20 +46,20 @@ Table 'supplier' loaded successfully.
 Starting to Extract table 'partsupp'...
 Table 'partsupp' extracted successfully.
 Starting to Load table 'partsupp' into raw.elt_partsupp...
-[Stage 7:>                                                          (0 + 8) / 8][Stage 7:=======>                                                   (1 + 7) / 8][Stage 7:======================>                                    (3 + 5) / 8]                                                                                Table 'partsupp' loaded successfully.
+[Stage 7:>                                                          (0 + 8) / 8][Stage 7:=======>                                                   (1 + 7) / 8][Stage 7:============================================>              (6 + 2) / 8][Stage 7:===================================================>       (7 + 1) / 8]                                                                                Table 'partsupp' loaded successfully.
 
 === Starting EL process for table 'orders'... ===
 Starting to Extract table 'orders'...
 Table 'orders' extracted successfully.
 Starting to Load table 'orders' into raw.elt_orders...
-[Stage 9:>                                                          (0 + 8) / 8][Stage 9:=======>                                                   (1 + 7) / 8][Stage 9:======================>                                    (3 + 5) / 8]                                                                                Table 'orders' loaded successfully.
+[Stage 9:>                                                          (0 + 8) / 8][Stage 9:=======>                                                   (1 + 7) / 8][Stage 9:==============>                                            (2 + 6) / 8][Stage 9:======================>                                    (3 + 5) / 8][Stage 9:=============================>                             (4 + 4) / 8]                                                                                Table 'orders' loaded successfully.
 
 === Starting EL process for table 'lineitem'... ===
 Starting to Extract table 'lineitem'...
 Table 'lineitem' extracted successfully.
 Starting to Load table 'lineitem' into raw.elt_lineitem...
-26/06/25 22:47:39 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
-[Stage 11:>                                                        (0 + 8) / 30][Stage 11:=====>                                                   (3 + 8) / 30][Stage 11:=============>                                           (7 + 8) / 30][Stage 11:===============>                                         (8 + 8) / 30][Stage 11:=================>                                       (9 + 8) / 30][Stage 11:==================>                                     (10 + 8) / 30][Stage 11:============================>                           (15 + 8) / 30][Stage 11:=============================>                          (16 + 8) / 30][Stage 11:===============================>                        (17 + 8) / 30][Stage 11:=================================>                      (18 + 8) / 30][Stage 11:=========================================>              (22 + 8) / 30][Stage 11:==========================================>             (23 + 7) / 30][Stage 11:============================================>           (24 + 6) / 30][Stage 11:==============================================>         (25 + 5) / 30][Stage 11:================================================>       (26 + 4) / 30][Stage 11:==================================================>     (27 + 3) / 30][Stage 11:====================================================>   (28 + 2) / 30]                                                                                Table 'lineitem' loaded successfully.
+26/06/26 02:01:26 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
+[Stage 11:>                                                         (0 + 8) / 9][Stage 11:>                                                         (0 + 8) / 9][Stage 11:>                                                         (0 + 8) / 9][Stage 11:======>                                                   (1 + 8) / 9][Stage 11:============>                                             (2 + 7) / 9][Stage 11:===================>                                      (3 + 6) / 9][Stage 11:=========================>                                (4 + 5) / 9][Stage 11:================================>                         (5 + 4) / 9][Stage 11:======================================>                   (6 + 3) / 9][Stage 11:=============================================>            (7 + 2) / 9][Stage 11:===================================================>      (8 + 1) / 9]                                                                                Table 'lineitem' loaded successfully.
 
 ELT Extract-Load process done.
 SparkSession stopped.

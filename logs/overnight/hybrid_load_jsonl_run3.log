@@ -3,11 +3,11 @@ WARNING: Using incubator modules: jdk.incubator.vector
 Ivy Default Cache set to: /Users/lpurwito/.ivy2.5.2/cache
 The jars for the packages stored in: /Users/lpurwito/.ivy2.5.2/jars
 org.postgresql#postgresql added as a dependency
-:: resolving dependencies :: org.apache.spark#spark-submit-parent-3dae81a1-1f90-49cb-b2d9-4a974dfac651;1.0
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-35295cd2-fc4c-44f1-96a4-c3c8c68daf46;1.0
 	confs: [default]
 	found org.postgresql#postgresql;42.5.4 in central
 	found org.checkerframework#checker-qual;3.5.0 in central
-:: resolution report :: resolve 62ms :: artifacts dl 7ms
+:: resolution report :: resolve 62ms :: artifacts dl 17ms
 	:: modules in use:
 	org.checkerframework#checker-qual;3.5.0 from central in [default]
 	org.postgresql#postgresql;42.5.4 from central in [default]
@@ -17,10 +17,10 @@ org.postgresql#postgresql added as a dependency
 	---------------------------------------------------------------------
 	|      default     |   2   |   0   |   0   |   0   ||   2   |   0   |
 	---------------------------------------------------------------------
-:: retrieving :: org.apache.spark#spark-submit-parent-3dae81a1-1f90-49cb-b2d9-4a974dfac651
+:: retrieving :: org.apache.spark#spark-submit-parent-35295cd2-fc4c-44f1-96a4-c3c8c68daf46
 	confs: [default]
-	0 artifacts copied, 2 already retrieved (0kB/8ms)
-26/06/25 23:44:17 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+	0 artifacts copied, 2 already retrieved (0kB/18ms)
+26/06/26 02:59:56 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
 Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
 Setting default log level to "WARN".
 To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
@@ -34,11 +34,11 @@ Table 'nation' loaded successfully.
 
 === Starting ECL Process for table 'part' ===
 Starting to extract table 'part'...
-Table 'part' extracted successfully.
+[Stage 2:>                                                          (0 + 8) / 8]                                                                                Table 'part' extracted successfully.
 Starting to clean table 'part'...
 Table 'part' cleaned successfully.
 Starting to load table 'part'...
-[Stage 3:>                                                          (0 + 8) / 8][Stage 3:=======>                                                   (1 + 7) / 8][Stage 3:============================================>              (6 + 2) / 8]                                                                                Table 'part' loaded successfully.
+[Stage 3:>                                                          (0 + 8) / 8][Stage 3:=======>                                                   (1 + 7) / 8]                                                                                Table 'part' loaded successfully.
 
 === Starting ECL Process for table 'supplier' ===
 Starting to extract table 'supplier'...
@@ -50,27 +50,27 @@ Table 'supplier' loaded successfully.
 
 === Starting ECL Process for table 'partsupp' ===
 Starting to extract table 'partsupp'...
-Table 'partsupp' extracted successfully.
+[Stage 6:>                                                          (0 + 8) / 8][Stage 6:=======>                                                   (1 + 7) / 8]                                                                                Table 'partsupp' extracted successfully.
 Starting to clean table 'partsupp'...
 Table 'partsupp' cleaned successfully.
 Starting to load table 'partsupp'...
-[Stage 7:>                                                          (0 + 8) / 8][Stage 7:=======>                                                   (1 + 7) / 8]                                                                                Table 'partsupp' loaded successfully.
+[Stage 7:>                                                          (0 + 8) / 8][Stage 7:==============>                                            (2 + 6) / 8]                                                                                Table 'partsupp' loaded successfully.
 
 === Starting ECL Process for table 'orders' ===
 Starting to extract table 'orders'...
-Table 'orders' extracted successfully.
+[Stage 8:>                                                         (0 + 8) / 16][Stage 8:================================>                         (9 + 7) / 16]                                                                                Table 'orders' extracted successfully.
 Starting to clean table 'orders'...
 Table 'orders' cleaned successfully.
 Starting to load table 'orders'...
-[Stage 9:>                                                          (0 + 8) / 8][Stage 9:=======>                                                   (1 + 7) / 8][Stage 9:==============>                                            (2 + 6) / 8][Stage 9:=============================>                             (4 + 4) / 8]                                                                                Table 'orders' loaded successfully.
+[Stage 9:>                                                         (0 + 8) / 16][Stage 9:=============================>                            (8 + 8) / 16][Stage 9:================================>                         (9 + 7) / 16][Stage 9:=======================================>                 (11 + 5) / 16]                                                                                Table 'orders' loaded successfully.
 
 === Starting ECL Process for table 'lineitem' ===
 Starting to extract table 'lineitem'...
-Table 'lineitem' extracted successfully.
+[Stage 10:>                                                        (0 + 8) / 86][Stage 10:=====>                                                   (8 + 8) / 86][Stage 10:=========>                                              (14 + 8) / 86][Stage 10:==========>                                             (16 + 8) / 86][Stage 10:===============>                                        (24 + 8) / 86][Stage 10:====================>                                   (32 + 8) / 86][Stage 10:==========================>                             (40 + 8) / 86][Stage 10:==========================>                             (41 + 8) / 86][Stage 10:===============================>                        (48 + 8) / 86][Stage 10:================================>                       (50 + 8) / 86][Stage 10:====================================>                   (56 + 8) / 86][Stage 10:=====================================>                  (58 + 8) / 86][Stage 10:=========================================>              (64 + 8) / 86][Stage 10:==========================================>             (65 + 8) / 86][Stage 10:==============================================>         (72 + 8) / 86][Stage 10:====================================================>   (80 + 6) / 86][Stage 10:====================================================>   (81 + 5) / 86]                                                                                Table 'lineitem' extracted successfully.
 Starting to clean table 'lineitem'...
 Table 'lineitem' cleaned successfully.
 Starting to load table 'lineitem'...
-[Stage 11:>                                                        (0 + 8) / 30][Stage 11:=====>                                                   (3 + 8) / 30][Stage 11:===========>                                             (6 + 8) / 30][Stage 11:===============>                                         (8 + 8) / 30][Stage 11:========================>                               (13 + 8) / 30][Stage 11:=============================>                          (16 + 8) / 30][Stage 11:=====================================>                  (20 + 8) / 30][Stage 11:=========================================>              (22 + 8) / 30][Stage 11:==========================================>             (23 + 7) / 30][Stage 11:============================================>           (24 + 6) / 30][Stage 11:==============================================>         (25 + 5) / 30]                                                                                Table 'lineitem' loaded successfully.
+[Stage 11:>                                                        (0 + 8) / 86][Stage 11:=>                                                       (3 + 8) / 86][Stage 11:=====>                                                   (8 + 8) / 86][Stage 11:======>                                                 (10 + 8) / 86][Stage 11:==========>                                             (16 + 8) / 86][Stage 11:============>                                           (19 + 8) / 86][Stage 11:===============>                                        (24 + 8) / 86][Stage 11:=================>                                      (27 + 8) / 86][Stage 11:====================>                                   (32 + 8) / 86][Stage 11:========================>                               (37 + 8) / 86][Stage 11:==========================>                             (40 + 8) / 86][Stage 11:==========================>                             (41 + 8) / 86][Stage 11:=============================>                          (45 + 8) / 86][Stage 11:===============================>                        (48 + 8) / 86][Stage 11:===============================>                        (49 + 8) / 86][Stage 11:=================================>                      (51 + 8) / 86][Stage 11:===================================>                    (55 + 8) / 86][Stage 11:====================================>                   (56 + 8) / 86][Stage 11:=====================================>                  (58 + 8) / 86][Stage 11:======================================>                 (59 + 8) / 86][Stage 11:========================================>               (62 + 8) / 86][Stage 11:=========================================>              (64 + 8) / 86][Stage 11:===========================================>            (67 + 8) / 86][Stage 11:============================================>           (69 + 8) / 86][Stage 11:==============================================>         (71 + 8) / 86][Stage 11:==============================================>         (72 + 8) / 86][Stage 11:================================================>       (74 + 8) / 86][Stage 11:================================================>       (75 + 8) / 86][Stage 11:===================================================>    (79 + 7) / 86][Stage 11:====================================================>   (80 + 6) / 86][Stage 11:====================================================>   (81 + 5) / 86][Stage 11:=====================================================>  (82 + 4) / 86][Stage 11:======================================================> (84 + 2) / 86]                                                                                Table 'lineitem' loaded successfully.
 
 Hybrid Extract-Clean-Load process done.
 SparkSession stopped.

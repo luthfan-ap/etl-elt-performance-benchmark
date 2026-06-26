@@ -1,23 +1,23 @@
 	Command being timed: "bash -c cd '/Users/lpurwito/Documents/personal/etl-elt-performance-benchmark/dbt_transform' && dbt run --select path:models/hybrid --target-path target/hybrid_parquet_run3"
-	User time (seconds): 1.90
-	System time (seconds): 0.28
-	Percent of CPU this job got: 3%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:59.57
+	User time (seconds): 1.39
+	System time (seconds): 0.27
+	Percent of CPU this job got: 2%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:57.48
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 134736
+	Maximum resident set size (kbytes): 131808
 	Average resident set size (kbytes): 0
-	Major (requiring I/O) page faults: 435
-	Minor (reclaiming a frame) page faults: 20318
-	Voluntary context switches: 2460
-	Involuntary context switches: 6112
+	Major (requiring I/O) page faults: 460
+	Minor (reclaiming a frame) page faults: 20058
+	Voluntary context switches: 2468
+	Involuntary context switches: 5739
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 0
 	Socket messages sent: 231
-	Socket messages received: 317
+	Socket messages received: 321
 	Signals delivered: 0
 	Page size (bytes): 16384
 	Exit status: 0
