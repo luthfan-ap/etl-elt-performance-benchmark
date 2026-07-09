@@ -1,18 +1,18 @@
 	Command being timed: "bash -c cd '/Users/lpurwito/Documents/personal/etl-elt-performance-benchmark/dbt_transform' && dbt run --select path:models/elt --target-path target/elt_csv_run3"
-	User time (seconds): 2.41
-	System time (seconds): 0.72
-	Percent of CPU this job got: 1%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 3:03.30
+	User time (seconds): 1.44
+	System time (seconds): 0.41
+	Percent of CPU this job got: 0%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 5:08.17
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 131264
+	Maximum resident set size (kbytes): 130176
 	Average resident set size (kbytes): 0
-	Major (requiring I/O) page faults: 993
-	Minor (reclaiming a frame) page faults: 19655
-	Voluntary context switches: 771
-	Involuntary context switches: 5564
+	Major (requiring I/O) page faults: 1641
+	Minor (reclaiming a frame) page faults: 29934
+	Voluntary context switches: 3179
+	Involuntary context switches: 6112
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 0

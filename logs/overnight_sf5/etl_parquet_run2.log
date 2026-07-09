@@ -1,0 +1,44 @@
+WARNING: Using incubator modules: jdk.incubator.vector
+:: loading settings :: url = jar:file:/Users/lpurwito/Documents/personal/etl-elt-performance-benchmark/.venv/lib/python3.9/site-packages/pyspark/jars/ivy-2.5.3.jar!/org/apache/ivy/core/settings/ivysettings.xml
+Ivy Default Cache set to: /Users/lpurwito/.ivy2.5.2/cache
+The jars for the packages stored in: /Users/lpurwito/.ivy2.5.2/jars
+org.postgresql#postgresql added as a dependency
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-a9d4ceab-12c0-4e3c-aa70-9a98b8991f4b;1.0
+	confs: [default]
+	found org.postgresql#postgresql;42.5.4 in central
+	found org.checkerframework#checker-qual;3.5.0 in central
+:: resolution report :: resolve 57ms :: artifacts dl 12ms
+	:: modules in use:
+	org.checkerframework#checker-qual;3.5.0 from central in [default]
+	org.postgresql#postgresql;42.5.4 from central in [default]
+	---------------------------------------------------------------------
+	|                  |            modules            ||   artifacts   |
+	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+	---------------------------------------------------------------------
+	|      default     |   2   |   0   |   0   |   0   ||   2   |   0   |
+	---------------------------------------------------------------------
+:: retrieving :: org.apache.spark#spark-submit-parent-a9d4ceab-12c0-4e3c-aa70-9a98b8991f4b
+	confs: [default]
+	0 artifacts copied, 2 already retrieved (0kB/14ms)
+26/06/26 02:31:23 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+
+=== EXTRACTION ===
+Extracting table 'nation.parquet'...
+Extracting table 'part.parquet'...
+Extracting table 'supplier.parquet'...
+Extracting table 'partsupp.parquet'...
+Extracting table 'orders.parquet'...
+Extracting table 'lineitem.parquet'...
+
+=== TRANSFORMATION ===
+Starting the transformation phase...
+
+=== LOADING ===
+Starting the loading phase...
+Loading into 'result_etl.etl_query9' table...
+[Stage 6:>    (0 + 8) / 8][Stage 7:>    (0 + 0) / 8][Stage 8:>    (0 + 0) / 8][Stage 6:===> (6 + 2) / 8][Stage 7:>    (0 + 6) / 8][Stage 8:>    (0 + 0) / 8][Stage 6:====>(7 + 1) / 8][Stage 7:>    (0 + 7) / 8][Stage 8:>    (0 + 0) / 8][Stage 7:===> (6 + 2) / 8][Stage 8:>    (0 + 6) / 8][Stage 9:>    (0 + 0) / 1][Stage 7:====>(7 + 1) / 8][Stage 8:>    (0 + 7) / 8][Stage 9:>    (0 + 0) / 1]                                                                                [Stage 13:>                                                         (0 + 8) / 9][Stage 13:===================================================>      (8 + 1) / 9][Stage 16:>                                                        (0 + 8) / 11][Stage 16:===============>                                         (3 + 8) / 11][Stage 16:====================================>                    (7 + 4) / 11][Stage 16:==================================================>     (10 + 1) / 11][Stage 21:>                                                        (0 + 8) / 11][Stage 21:====================>                                    (4 + 7) / 11][Stage 21:=========================================>               (8 + 3) / 11]                                                                                Table 'result_etl.etl_query9' loaded successfully.
+ETL Process done.
+SparkSession stopped.

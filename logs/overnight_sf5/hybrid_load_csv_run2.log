@@ -1,0 +1,76 @@
+WARNING: Using incubator modules: jdk.incubator.vector
+:: loading settings :: url = jar:file:/Users/lpurwito/Documents/personal/etl-elt-performance-benchmark/.venv/lib/python3.9/site-packages/pyspark/jars/ivy-2.5.3.jar!/org/apache/ivy/core/settings/ivysettings.xml
+Ivy Default Cache set to: /Users/lpurwito/.ivy2.5.2/cache
+The jars for the packages stored in: /Users/lpurwito/.ivy2.5.2/jars
+org.postgresql#postgresql added as a dependency
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-12d07617-c665-4dd1-bdaa-93d595091fcc;1.0
+	confs: [default]
+	found org.postgresql#postgresql;42.5.4 in central
+	found org.checkerframework#checker-qual;3.5.0 in central
+:: resolution report :: resolve 60ms :: artifacts dl 8ms
+	:: modules in use:
+	org.checkerframework#checker-qual;3.5.0 from central in [default]
+	org.postgresql#postgresql;42.5.4 from central in [default]
+	---------------------------------------------------------------------
+	|                  |            modules            ||   artifacts   |
+	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+	---------------------------------------------------------------------
+	|      default     |   2   |   0   |   0   |   0   ||   2   |   0   |
+	---------------------------------------------------------------------
+:: retrieving :: org.apache.spark#spark-submit-parent-12d07617-c665-4dd1-bdaa-93d595091fcc
+	confs: [default]
+	0 artifacts copied, 2 already retrieved (0kB/21ms)
+26/06/26 02:15:58 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+=== Starting ECL Process for table 'nation' ===
+Starting to extract table 'nation'...
+Table 'nation' extracted successfully.
+Starting to clean table 'nation'...
+Table 'nation' cleaned successfully.
+Starting to load table 'nation'...
+Table 'nation' loaded successfully.
+
+=== Starting ECL Process for table 'part' ===
+Starting to extract table 'part'...
+Table 'part' extracted successfully.
+Starting to clean table 'part'...
+Table 'part' cleaned successfully.
+Starting to load table 'part'...
+[Stage 3:>                                                          (0 + 8) / 8][Stage 3:=======>                                                   (1 + 7) / 8]                                                                                Table 'part' loaded successfully.
+
+=== Starting ECL Process for table 'supplier' ===
+Starting to extract table 'supplier'...
+Table 'supplier' extracted successfully.
+Starting to clean table 'supplier'...
+Table 'supplier' cleaned successfully.
+Starting to load table 'supplier'...
+Table 'supplier' loaded successfully.
+
+=== Starting ECL Process for table 'partsupp' ===
+Starting to extract table 'partsupp'...
+Table 'partsupp' extracted successfully.
+Starting to clean table 'partsupp'...
+Table 'partsupp' cleaned successfully.
+Starting to load table 'partsupp'...
+[Stage 7:>                                                          (0 + 8) / 8][Stage 7:======================>                                    (3 + 5) / 8]                                                                                Table 'partsupp' loaded successfully.
+
+=== Starting ECL Process for table 'orders' ===
+Starting to extract table 'orders'...
+Table 'orders' extracted successfully.
+Starting to clean table 'orders'...
+Table 'orders' cleaned successfully.
+Starting to load table 'orders'...
+[Stage 9:>                                                          (0 + 8) / 8][Stage 9:=======>                                                   (1 + 7) / 8][Stage 9:==============>                                            (2 + 6) / 8]                                                                                Table 'orders' loaded successfully.
+
+=== Starting ECL Process for table 'lineitem' ===
+Starting to extract table 'lineitem'...
+Table 'lineitem' extracted successfully.
+Starting to clean table 'lineitem'...
+Table 'lineitem' cleaned successfully.
+Starting to load table 'lineitem'...
+[Stage 11:>                                                        (0 + 8) / 30][Stage 11:=>                                                       (1 + 8) / 30][Stage 11:===============>                                         (8 + 8) / 30][Stage 11:=================>                                       (9 + 8) / 30][Stage 11:==========================>                             (14 + 8) / 30][Stage 11:=============================>                          (16 + 8) / 30][Stage 11:=================================>                      (18 + 8) / 30][Stage 11:=======================================>                (21 + 8) / 30][Stage 11:==========================================>             (23 + 7) / 30][Stage 11:============================================>           (24 + 6) / 30][Stage 11:==============================================>         (25 + 5) / 30][Stage 11:================================================>       (26 + 4) / 30]                                                                                Table 'lineitem' loaded successfully.
+
+Hybrid Extract-Clean-Load process done.
+SparkSession stopped.

@@ -1,38 +1,38 @@
 /Users/lpurwito/Documents/personal/etl-elt-performance-benchmark/.venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
   warnings.warn(
-[0m18:37:19  Running with dbt=1.10.22
-[0m18:37:19  dbt version: 1.10.22
-[0m18:37:19  python version: 3.9.6
-[0m18:37:19  python path: /Users/lpurwito/Documents/personal/etl-elt-performance-benchmark/.venv/bin/python3
-[0m18:37:19  os info: macOS-26.5.1-arm64-arm-64bit
-[0m18:37:19  Using profiles dir at /Users/lpurwito/.dbt
-[0m18:37:19  Using profiles.yml file at /Users/lpurwito/.dbt/profiles.yml
-[0m18:37:19  Using dbt_project.yml file at /Users/lpurwito/Documents/personal/etl-elt-performance-benchmark/dbt_transform/dbt_project.yml
-[0m18:37:19  adapter type: postgres
-[0m18:37:19  adapter version: 1.9.1
-[0m18:37:19  Configuration:
-[0m18:37:19    profiles.yml file [[32mOK found and valid[0m]
-[0m18:37:19    dbt_project.yml file [[32mOK found and valid[0m]
-[0m18:37:19  Required dependencies:
-[0m18:37:19   - git [[32mOK found[0m]
+[0m17:51:00  Running with dbt=1.10.22
+[0m17:51:00  dbt version: 1.10.22
+[0m17:51:00  python version: 3.9.6
+[0m17:51:00  python path: /Users/lpurwito/Documents/personal/etl-elt-performance-benchmark/.venv/bin/python3
+[0m17:51:00  os info: macOS-26.5.2-arm64-arm-64bit
+[0m17:51:01  Using profiles dir at /Users/lpurwito/.dbt
+[0m17:51:01  Using profiles.yml file at /Users/lpurwito/.dbt/profiles.yml
+[0m17:51:01  Using dbt_project.yml file at /Users/lpurwito/Documents/personal/etl-elt-performance-benchmark/dbt_transform/dbt_project.yml
+[0m17:51:01  adapter type: postgres
+[0m17:51:01  adapter version: 1.9.1
+[0m17:51:01  Configuration:
+[0m17:51:01    profiles.yml file [[32mOK found and valid[0m]
+[0m17:51:01    dbt_project.yml file [[32mOK found and valid[0m]
+[0m17:51:01  Required dependencies:
+[0m17:51:01   - git [[32mOK found[0m]
 
-[0m18:37:19  Connection:
-[0m18:37:19    host: 127.0.0.1
-[0m18:37:19    port: 5432
-[0m18:37:19    user: lpurwito
-[0m18:37:19    database: tpch_dw
-[0m18:37:19    schema: result
-[0m18:37:19    connect_timeout: 10
-[0m18:37:19    role: None
-[0m18:37:19    search_path: None
-[0m18:37:19    keepalives_idle: 0
-[0m18:37:19    sslmode: None
-[0m18:37:19    sslcert: None
-[0m18:37:19    sslkey: None
-[0m18:37:19    sslrootcert: None
-[0m18:37:19    application_name: dbt
-[0m18:37:19    retries: 1
-[0m18:37:19  Registered adapter: postgres=1.9.1
-[0m18:37:19    Connection test: [[32mOK connection ok[0m]
+[0m17:51:01  Connection:
+[0m17:51:01    host: 127.0.0.1
+[0m17:51:01    port: 5432
+[0m17:51:01    user: lpurwito
+[0m17:51:01    database: tpch_dw
+[0m17:51:01    schema: result
+[0m17:51:01    connect_timeout: 10
+[0m17:51:01    role: None
+[0m17:51:01    search_path: None
+[0m17:51:01    keepalives_idle: 0
+[0m17:51:01    sslmode: None
+[0m17:51:01    sslcert: None
+[0m17:51:01    sslkey: None
+[0m17:51:01    sslrootcert: None
+[0m17:51:01    application_name: dbt
+[0m17:51:01    retries: 1
+[0m17:51:01  Registered adapter: postgres=1.9.1
+[0m17:51:02    Connection test: [[32mOK connection ok[0m]
 
-[0m18:37:19  [32mAll checks passed![0m
+[0m17:51:02  [32mAll checks passed![0m

@@ -15,9 +15,9 @@ DBT_DIR="$PROJECT_ROOT/dbt_transform"
 LOG_DIR="$PROJECT_ROOT/logs/overnight"
 METRICS_FILE="$PROJECT_ROOT/logs/metrics/scenario_times.csv"
 
-FORMATS=("csv" "jsonl" "parquet")
+FORMATS=("jsonl")
 RUNS=(1 2 3)
-SCALE_FACTOR="sf5"
+SCALE_FACTOR="sf10"
 
 JAVA_HOME_PATH="$(brew --prefix openjdk@17)/libexec/openjdk.jdk/Contents/Home"
 GTIME="$(brew --prefix gnu-time)/bin/gtime"
@@ -159,6 +159,30 @@ truncate_hybrid_raw() {
     "
 }
 
+# =========================
+# DATASET CONVERT / CLEANUP HELPERS
+# (Konversi & penghapusan data mentah dijalankan DI LUAR run_timed,
+#  sehingga TIDAK ikut terhitung dalam durasi skenario apa pun.)
+# =========================
+DATASET_DIR="$PROJECT_ROOT/dataset"
+
+convert_format() {
+    local fmt="$1"
+    echo ""
+    echo ">>> [SETUP] Konversi .tbl -> ${fmt} (tidak diukur durasinya)"
+    echo ">>> TIME : $(date)"
+    ( cd "$DATASET_DIR" && python convert.py "$fmt" )
+    echo ">>> [SETUP] Konversi ${fmt} selesai."
+}
+
+delete_format() {
+    local fmt="$1"
+    echo ""
+    echo ">>> [CLEANUP] Menghapus dataset/${fmt}/ (tidak diukur durasinya)"
+    rm -f "$DATASET_DIR/${fmt}/"*."${fmt}"
+    echo ">>> [CLEANUP] dataset/${fmt}/ dikosongkan."
+}
+
 cd "$PROJECT_ROOT"
 
 # =========================
@@ -171,8 +195,16 @@ run_timed "SYSTEM" "none" "0" "dbt_debug" \
 # =========================
 # RUN ALL SCENARIOS
 # =========================
-for run in "${RUNS[@]}"; do
-    for format in "${FORMATS[@]}"; do
+# Urutan loop: FORMAT di luar, RUN di dalam. Ini memungkinkan tiap format
+# dikonversi sekali sebelum dipakai lalu dihapus setelah selesai, sehingga
+# hanya satu format hasil konversi yang ada di disk pada satu waktu.
+# Urutan format tetap: csv -> jsonl -> parquet (sesuai FORMATS di atas).
+for format in "${FORMATS[@]}"; do
+
+    # Konversi .tbl -> format ini (DI LUAR run_timed, tidak dihitung durasinya)
+    convert_format "$format"
+
+    for run in "${RUNS[@]}"; do
 
         export FILE_FORMAT_RUN="$format"
         export RUN_ID="run${run}"
@@ -212,6 +244,10 @@ for run in "${RUNS[@]}"; do
             bash -c "cd '$DBT_DIR' && dbt run --select path:models/hybrid --target-path target/hybrid_${format}_run${run}"
 
     done
+
+    # Hapus data format ini setelah SEMUA run selesai (DI LUAR run_timed)
+    delete_format "$format"
+
 done
 
 echo ""

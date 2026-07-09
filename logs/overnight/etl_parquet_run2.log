@@ -3,11 +3,11 @@ WARNING: Using incubator modules: jdk.incubator.vector
 Ivy Default Cache set to: /Users/lpurwito/.ivy2.5.2/cache
 The jars for the packages stored in: /Users/lpurwito/.ivy2.5.2/jars
 org.postgresql#postgresql added as a dependency
-:: resolving dependencies :: org.apache.spark#spark-submit-parent-a9d4ceab-12c0-4e3c-aa70-9a98b8991f4b;1.0
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-bc38adbf-b8e0-46d2-8b6f-eef86bcdc7a7;1.0
 	confs: [default]
 	found org.postgresql#postgresql;42.5.4 in central
 	found org.checkerframework#checker-qual;3.5.0 in central
-:: resolution report :: resolve 57ms :: artifacts dl 12ms
+:: resolution report :: resolve 62ms :: artifacts dl 17ms
 	:: modules in use:
 	org.checkerframework#checker-qual;3.5.0 from central in [default]
 	org.postgresql#postgresql;42.5.4 from central in [default]
@@ -17,10 +17,10 @@ org.postgresql#postgresql added as a dependency
 	---------------------------------------------------------------------
 	|      default     |   2   |   0   |   0   |   0   ||   2   |   0   |
 	---------------------------------------------------------------------
-:: retrieving :: org.apache.spark#spark-submit-parent-a9d4ceab-12c0-4e3c-aa70-9a98b8991f4b
+:: retrieving :: org.apache.spark#spark-submit-parent-bc38adbf-b8e0-46d2-8b6f-eef86bcdc7a7
 	confs: [default]
-	0 artifacts copied, 2 already retrieved (0kB/14ms)
-26/06/26 02:31:23 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+	0 artifacts copied, 2 already retrieved (0kB/17ms)
+26/07/09 23:59:28 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
 Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
 Setting default log level to "WARN".
 To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
@@ -39,6 +39,6 @@ Starting the transformation phase...
 === LOADING ===
 Starting the loading phase...
 Loading into 'result_etl.etl_query9' table...
-[Stage 6:>    (0 + 8) / 8][Stage 7:>    (0 + 0) / 8][Stage 8:>    (0 + 0) / 8][Stage 6:===> (6 + 2) / 8][Stage 7:>    (0 + 6) / 8][Stage 8:>    (0 + 0) / 8][Stage 6:====>(7 + 1) / 8][Stage 7:>    (0 + 7) / 8][Stage 8:>    (0 + 0) / 8][Stage 7:===> (6 + 2) / 8][Stage 8:>    (0 + 6) / 8][Stage 9:>    (0 + 0) / 1][Stage 7:====>(7 + 1) / 8][Stage 8:>    (0 + 7) / 8][Stage 9:>    (0 + 0) / 1]                                                                                [Stage 13:>                                                         (0 + 8) / 9][Stage 13:===================================================>      (8 + 1) / 9][Stage 16:>                                                        (0 + 8) / 11][Stage 16:===============>                                         (3 + 8) / 11][Stage 16:====================================>                    (7 + 4) / 11][Stage 16:==================================================>     (10 + 1) / 11][Stage 21:>                                                        (0 + 8) / 11][Stage 21:====================>                                    (4 + 7) / 11][Stage 21:=========================================>               (8 + 3) / 11]                                                                                Table 'result_etl.etl_query9' loaded successfully.
+[Stage 6:>    (0 + 8) / 8][Stage 7:>    (0 + 0) / 8][Stage 8:>    (0 + 0) / 8][Stage 7:>    (0 + 8) / 8][Stage 8:>    (0 + 0) / 8][Stage 9:>    (0 + 0) / 1][Stage 7:==>  (4 + 4) / 8][Stage 8:>    (0 + 4) / 8][Stage 9:>    (0 + 0) / 1][Stage 8:>                  (0 + 8) / 8][Stage 9:>                  (0 + 0) / 1]                                                                                [Stage 11:>                                                        (0 + 8) / 17][Stage 11:>                (0 + 8) / 17][Stage 13:>                 (0 + 0) / 1][Stage 11:==>              (2 + 8) / 17][Stage 13:>                 (0 + 0) / 1][Stage 11:=======>         (7 + 8) / 17][Stage 13:>                 (0 + 0) / 1][Stage 11:========>        (8 + 8) / 17][Stage 13:>                 (0 + 0) / 1][Stage 11:=============>  (14 + 3) / 17][Stage 13:>                 (0 + 1) / 1]                                                                                [Stage 15:=====>                                                   (1 + 8) / 10][Stage 19:>                                                        (0 + 8) / 12][Stage 19:===================>                                     (4 + 8) / 12][Stage 19:======================================>                  (8 + 4) / 12][Stage 19:==========================================>              (9 + 3) / 12][Stage 19:==============================================>         (10 + 2) / 12][Stage 19:===================================================>    (11 + 1) / 12][Stage 25:>                                                        (0 + 8) / 12][Stage 25:==============>                                          (3 + 8) / 12][Stage 25:=======================>                                 (5 + 7) / 12][Stage 25:============================>                            (6 + 6) / 12][Stage 25:===================================================>    (11 + 1) / 12]                                                                                Table 'result_etl.etl_query9' loaded successfully.
 ETL Process done.
 SparkSession stopped.

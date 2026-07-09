@@ -1,18 +1,18 @@
 	Command being timed: "python -u /Users/lpurwito/Documents/personal/etl-elt-performance-benchmark/src/hybrid/hybrid_query9.py"
-	User time (seconds): 0.71
-	System time (seconds): 0.30
+	User time (seconds): 0.31
+	System time (seconds): 0.15
 	Percent of CPU this job got: 0%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:35.62
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 6:03.78
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 71120
+	Maximum resident set size (kbytes): 70624
 	Average resident set size (kbytes): 0
-	Major (requiring I/O) page faults: 48
-	Minor (reclaiming a frame) page faults: 14887
-	Voluntary context switches: 1250
-	Involuntary context switches: 1308
+	Major (requiring I/O) page faults: 995
+	Minor (reclaiming a frame) page faults: 15430
+	Voluntary context switches: 2239
+	Involuntary context switches: 2157
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 0

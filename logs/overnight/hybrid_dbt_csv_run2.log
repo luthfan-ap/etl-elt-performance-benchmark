@@ -1,28 +1,28 @@
 /Users/lpurwito/Documents/personal/etl-elt-performance-benchmark/.venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
   warnings.warn(
-[0m19:18:07  Running with dbt=1.10.22
-[0m19:18:07  Registered adapter: postgres=1.9.1
-[0m19:18:08  Found 14 models, 14 sources, 447 macros
-[0m19:18:08  
-[0m19:18:08  Concurrency: 4 threads (target='dev')
-[0m19:18:08  
-[0m19:18:08  1 of 7 START sql view model result.stg_hybrid_lineitem ......................... [RUN]
-[0m19:18:08  2 of 7 START sql view model result.stg_hybrid_nation ........................... [RUN]
-[0m19:18:08  3 of 7 START sql view model result.stg_hybrid_orders ........................... [RUN]
-[0m19:18:08  4 of 7 START sql view model result.stg_hybrid_part ............................. [RUN]
-[0m19:18:08  1 of 7 OK created sql view model result.stg_hybrid_lineitem .................... [[32mCREATE VIEW[0m in 0.16s]
-[0m19:18:08  3 of 7 OK created sql view model result.stg_hybrid_orders ...................... [[32mCREATE VIEW[0m in 0.16s]
-[0m19:18:08  4 of 7 OK created sql view model result.stg_hybrid_part ........................ [[32mCREATE VIEW[0m in 0.16s]
-[0m19:18:08  2 of 7 OK created sql view model result.stg_hybrid_nation ...................... [[32mCREATE VIEW[0m in 0.16s]
-[0m19:18:08  5 of 7 START sql view model result.stg_hybrid_partsupp ......................... [RUN]
-[0m19:18:08  6 of 7 START sql view model result.stg_hybrid_supplier ......................... [RUN]
-[0m19:18:08  6 of 7 OK created sql view model result.stg_hybrid_supplier .................... [[32mCREATE VIEW[0m in 0.05s]
-[0m19:18:08  5 of 7 OK created sql view model result.stg_hybrid_partsupp .................... [[32mCREATE VIEW[0m in 0.05s]
-[0m19:18:08  7 of 7 START sql table model result_hybrid.mart_hybrid_query9 .................. [RUN]
-[0m19:18:59  7 of 7 OK created sql table model result_hybrid.mart_hybrid_query9 ............. [[32mSELECT 175[0m in 51.24s]
-[0m19:18:59  
-[0m19:18:59  Finished running 1 table model, 6 view models in 0 hours 0 minutes and 51.80 seconds (51.80s).
-[0m19:18:59  
-[0m19:18:59  [32mCompleted successfully[0m
-[0m19:18:59  
-[0m19:18:59  Done. PASS=7 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=7
+[0m15:56:40  Running with dbt=1.10.22
+[0m15:56:41  Registered adapter: postgres=1.9.1
+[0m15:56:42  Found 14 models, 14 sources, 447 macros
+[0m15:56:42  
+[0m15:56:42  Concurrency: 4 threads (target='dev')
+[0m15:56:42  
+[0m15:56:42  1 of 7 START sql view model result.stg_hybrid_lineitem ......................... [RUN]
+[0m15:56:42  2 of 7 START sql view model result.stg_hybrid_nation ........................... [RUN]
+[0m15:56:42  3 of 7 START sql view model result.stg_hybrid_orders ........................... [RUN]
+[0m15:56:42  4 of 7 START sql view model result.stg_hybrid_part ............................. [RUN]
+[0m15:56:43  3 of 7 OK created sql view model result.stg_hybrid_orders ...................... [[32mCREATE VIEW[0m in 0.18s]
+[0m15:56:43  4 of 7 OK created sql view model result.stg_hybrid_part ........................ [[32mCREATE VIEW[0m in 0.18s]
+[0m15:56:43  2 of 7 OK created sql view model result.stg_hybrid_nation ...................... [[32mCREATE VIEW[0m in 0.18s]
+[0m15:56:43  1 of 7 OK created sql view model result.stg_hybrid_lineitem .................... [[32mCREATE VIEW[0m in 0.18s]
+[0m15:56:43  5 of 7 START sql view model result.stg_hybrid_partsupp ......................... [RUN]
+[0m15:56:43  6 of 7 START sql view model result.stg_hybrid_supplier ......................... [RUN]
+[0m15:56:43  6 of 7 OK created sql view model result.stg_hybrid_supplier .................... [[32mCREATE VIEW[0m in 0.06s]
+[0m15:56:43  5 of 7 OK created sql view model result.stg_hybrid_partsupp .................... [[32mCREATE VIEW[0m in 0.06s]
+[0m15:56:43  7 of 7 START sql table model result_hybrid.mart_hybrid_query9 .................. [RUN]
+[0m15:57:55  7 of 7 OK created sql table model result_hybrid.mart_hybrid_query9 ............. [[32mSELECT 175[0m in 72.38s]
+[0m15:57:55  
+[0m15:57:55  Finished running 1 table model, 6 view models in 0 hours 1 minutes and 13.70 seconds (73.70s).
+[0m15:57:55  
+[0m15:57:55  [32mCompleted successfully[0m
+[0m15:57:55  
+[0m15:57:55  Done. PASS=7 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=7

@@ -1,18 +1,18 @@
 	Command being timed: "python -u /Users/lpurwito/Documents/personal/etl-elt-performance-benchmark/src/elt/elt_query9.py"
-	User time (seconds): 0.28
-	System time (seconds): 0.16
+	User time (seconds): 0.32
+	System time (seconds): 0.14
 	Percent of CPU this job got: 0%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 5:14.29
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 9:47.77
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 69536
+	Maximum resident set size (kbytes): 69680
 	Average resident set size (kbytes): 0
-	Major (requiring I/O) page faults: 1198
-	Minor (reclaiming a frame) page faults: 16576
-	Voluntary context switches: 2590
-	Involuntary context switches: 2075
+	Major (requiring I/O) page faults: 283
+	Minor (reclaiming a frame) page faults: 16006
+	Voluntary context switches: 2297
+	Involuntary context switches: 2354
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 0

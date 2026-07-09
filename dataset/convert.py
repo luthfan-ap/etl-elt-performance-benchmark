@@ -1,10 +1,23 @@
 import duckdb
 import os
+import sys
 
 # --- Configuration ---
 SOURCE_DIR = './tbl'  # directory file .tbl
 OUTPUT_DIR = '.' # folder untuk converted data
 TABLES = ['customer', 'lineitem', 'nation', 'orders', 'part', 'partsupp', 'region', 'supplier']
+
+# Format target: diambil dari argumen CLI (mis. `python convert.py csv`).
+# Kalau tidak ada argumen, konversi ke SEMUA format (perilaku lama tetap sama).
+# Ini memungkinkan konversi satu-per-satu untuk menghemat ruang disk.
+VALID_FORMATS = ['csv', 'jsonl', 'parquet']
+if len(sys.argv) > 1:
+    TARGET_FORMATS = [f.strip().lower() for f in sys.argv[1:]]
+    for f in TARGET_FORMATS:
+        if f not in VALID_FORMATS:
+            raise ValueError(f"Format '{f}' tidak dikenal. Pilih dari: {VALID_FORMATS}")
+else:
+    TARGET_FORMATS = VALID_FORMATS
 
 # Defining the TPC-H schemas
 SCHEMAS = {
@@ -87,12 +100,11 @@ SCHEMAS = {
     }
 }
 
-# Create directories for outputs
-os.makedirs(f'{OUTPUT_DIR}/csv', exist_ok=True)
-os.makedirs(f'{OUTPUT_DIR}/jsonl', exist_ok=True)
-os.makedirs(f'{OUTPUT_DIR}/parquet', exist_ok=True)
+# Create directories only for the requested output formats
+for fmt in TARGET_FORMATS:
+    os.makedirs(f'{OUTPUT_DIR}/{fmt}', exist_ok=True)
 
-print("Starting conversion for 8 tables with DuckDB...")
+print(f"Starting conversion for 8 tables with DuckDB (formats: {', '.join(TARGET_FORMATS)})...")
 
 con = duckdb.connect()
 
@@ -103,14 +115,14 @@ for table in TABLES:
         continue
 
     print(f'Processing {table} with explicit schema...')
-    
+
     tbl_file = f'{SOURCE_DIR}/{table}.tbl'
     csv_file = f'{OUTPUT_DIR}/csv/{table}.csv'
     jsonl_file = f'{OUTPUT_DIR}/jsonl/{table}.jsonl'
     parquet_file = f'{OUTPUT_DIR}/parquet/{table}.parquet'
-    
+
     table_schema = SCHEMAS[table]
-    
+
     # Build the 'read_csv' SQL
     read_tbl_sql = f"""
         read_csv(
@@ -121,18 +133,21 @@ for table in TABLES:
             types={list(table_schema.values())}
         )
     """
-    
+
     # We now select all columns, as there is no '_unused' to exclude
     select_sql = f"SELECT * FROM {read_tbl_sql}"
 
     # 1. Copy to CSV
-    con.execute(f"COPY ({select_sql}) TO '{csv_file}' (FORMAT 'CSV', HEADER 1)")
+    if 'csv' in TARGET_FORMATS:
+        con.execute(f"COPY ({select_sql}) TO '{csv_file}' (FORMAT 'CSV', HEADER 1)")
 
     # 2. Copy to JSONL
-    con.execute(f"COPY ({select_sql}) TO '{jsonl_file}' (FORMAT 'JSON')")
+    if 'jsonl' in TARGET_FORMATS:
+        con.execute(f"COPY ({select_sql}) TO '{jsonl_file}' (FORMAT 'JSON')")
 
     # 3. Copy to Parquet
-    con.execute(f"COPY ({select_sql}) TO '{parquet_file}' (FORMAT 'PARQUET', COMPRESSION 'SNAPPY')")
+    if 'parquet' in TARGET_FORMATS:
+        con.execute(f"COPY ({select_sql}) TO '{parquet_file}' (FORMAT 'PARQUET', COMPRESSION 'SNAPPY')")
 
     print(f"Finished {table}.")
 

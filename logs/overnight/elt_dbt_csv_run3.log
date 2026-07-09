@@ -1,28 +1,28 @@
 /Users/lpurwito/Documents/personal/etl-elt-performance-benchmark/.venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
   warnings.warn(
-[0m19:45:42  Running with dbt=1.10.22
-[0m19:45:43  Registered adapter: postgres=1.9.1
-[0m19:45:43  Found 14 models, 14 sources, 447 macros
-[0m19:45:43  
-[0m19:45:43  Concurrency: 4 threads (target='dev')
-[0m19:45:43  
-[0m19:45:44  1 of 7 START sql view model result.stg_elt_lineitem ............................ [RUN]
-[0m19:45:44  2 of 7 START sql view model result.stg_elt_nation .............................. [RUN]
-[0m19:45:44  3 of 7 START sql view model result.stg_elt_orders .............................. [RUN]
-[0m19:45:44  4 of 7 START sql view model result.stg_elt_part ................................ [RUN]
-[0m19:45:44  2 of 7 OK created sql view model result.stg_elt_nation ......................... [[32mCREATE VIEW[0m in 0.16s]
-[0m19:45:44  1 of 7 OK created sql view model result.stg_elt_lineitem ....................... [[32mCREATE VIEW[0m in 0.16s]
-[0m19:45:44  4 of 7 OK created sql view model result.stg_elt_part ........................... [[32mCREATE VIEW[0m in 0.16s]
-[0m19:45:44  3 of 7 OK created sql view model result.stg_elt_orders ......................... [[32mCREATE VIEW[0m in 0.16s]
-[0m19:45:44  5 of 7 START sql view model result.stg_elt_partsupp ............................ [RUN]
-[0m19:45:44  6 of 7 START sql view model result.stg_elt_supplier ............................ [RUN]
-[0m19:45:44  5 of 7 OK created sql view model result.stg_elt_partsupp ....................... [[32mCREATE VIEW[0m in 0.06s]
-[0m19:45:44  6 of 7 OK created sql view model result.stg_elt_supplier ....................... [[32mCREATE VIEW[0m in 0.06s]
-[0m19:45:44  7 of 7 START sql table model result_elt.mart_elt_query9 ........................ [RUN]
-[0m19:48:37  7 of 7 OK created sql table model result_elt.mart_elt_query9 ................... [[32mSELECT 175[0m in 172.98s]
-[0m19:48:38  
-[0m19:48:38  Finished running 1 table model, 6 view models in 0 hours 2 minutes and 54.40 seconds (174.40s).
-[0m19:48:38  
-[0m19:48:38  [32mCompleted successfully[0m
-[0m19:48:38  
-[0m19:48:38  Done. PASS=7 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=7
+[0m16:08:36  Running with dbt=1.10.22
+[0m16:08:37  Registered adapter: postgres=1.9.1
+[0m16:08:37  Found 14 models, 14 sources, 447 macros
+[0m16:08:37  
+[0m16:08:37  Concurrency: 4 threads (target='dev')
+[0m16:08:37  
+[0m16:08:37  1 of 7 START sql view model result.stg_elt_lineitem ............................ [RUN]
+[0m16:08:37  2 of 7 START sql view model result.stg_elt_nation .............................. [RUN]
+[0m16:08:37  3 of 7 START sql view model result.stg_elt_orders .............................. [RUN]
+[0m16:08:37  4 of 7 START sql view model result.stg_elt_part ................................ [RUN]
+[0m16:08:38  2 of 7 OK created sql view model result.stg_elt_nation ......................... [[32mCREATE VIEW[0m in 0.14s]
+[0m16:08:38  3 of 7 OK created sql view model result.stg_elt_orders ......................... [[32mCREATE VIEW[0m in 0.14s]
+[0m16:08:38  5 of 7 START sql view model result.stg_elt_partsupp ............................ [RUN]
+[0m16:08:38  6 of 7 START sql view model result.stg_elt_supplier ............................ [RUN]
+[0m16:08:38  4 of 7 OK created sql view model result.stg_elt_part ........................... [[32mCREATE VIEW[0m in 0.14s]
+[0m16:08:38  1 of 7 OK created sql view model result.stg_elt_lineitem ....................... [[32mCREATE VIEW[0m in 0.15s]
+[0m16:08:38  6 of 7 OK created sql view model result.stg_elt_supplier ....................... [[32mCREATE VIEW[0m in 0.06s]
+[0m16:08:38  5 of 7 OK created sql view model result.stg_elt_partsupp ....................... [[32mCREATE VIEW[0m in 0.06s]
+[0m16:08:38  7 of 7 START sql table model result_elt.mart_elt_query9 ........................ [RUN]
+[0m16:13:38  7 of 7 OK created sql table model result_elt.mart_elt_query9 ................... [[32mSELECT 175[0m in 300.55s]
+[0m16:13:38  
+[0m16:13:38  Finished running 1 table model, 6 view models in 0 hours 5 minutes and 1.41 seconds (301.41s).
+[0m16:13:38  
+[0m16:13:38  [32mCompleted successfully[0m
+[0m16:13:38  
+[0m16:13:38  Done. PASS=7 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=7
